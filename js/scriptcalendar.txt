@@ -1,10 +1,9 @@
 
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
-
+    alert('run script')
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
         left: 'prev,next today',
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       initialDate: '2023-01-12',
-      navLinks: true, // can click day/week names to navigate views
+      navLinks: true, 
       selectable: true,
       selectMirror: true,
       locale:'pt-br',
@@ -33,9 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
           arg.event.remove()
         }
       },
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: ""
+      editable: false,
+      dayMaxEvents: true, 
+      events: "./coleta.php"
     });
 
     calendar.render();
