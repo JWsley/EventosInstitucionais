@@ -1,0 +1,37 @@
+
+function doGet(req) {
+  var nOmee = req.parameter.nOmee;
+  var doc = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = doc.getSheetByName('AGENDA_DE_EVENTOS');
+  var values = sheet.getDataRange().getValues();
+
+  var output = [];
+
+  for (var i = 3; i < values.length; i++) {
+    var row = {};
+    row['nome'] = values[i][1];
+    row['data'] = values[i][2];
+    row['horario_inicio'] = values[i][3];
+    row['horario_fim'] = values[i][4];
+    row['desc'] = values[i][5];
+    row['unidade'] = values[i][6];
+    row['setor'] = values[i][7];
+    row['num'] = values[i][8];
+    row['local'] = values[i][9];
+    row['tipo'] = values[i][10];
+    row['outros'] = values[i][11];
+    row['email'] = values[i][12];
+    output.push(row);
+  }
+
+  if (nOmee != null) {
+    var returnOutput = output.filter(obj => obj.nome.toLowerCase().includes(nOmee.toLowerCase()));
+    return ContentService.createTextOutput(JSON.stringify({returnOutput})).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({output})).setMimeType(ContentService.MimeType.JSON);
+}
+
+
+URL
+https://script.googleusercontent.com/macros/echo?user_content_key=GGFWsFTAj4nfGcrzBWTmGJ4cysT14tq3HgbkKMzNodvY0lBNIM0gNvbliMy1T_cEWsGkOIJ4Gw9rIL_aPE8mDbT4D6nY75k3m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlH4rl_2I6A0fBuvsMVLSLQX4Qz8QfJVRehoU_x4fGZpqUOuVP-22DpjpuJZu2kJBFl7qRFVt-6Gde9n4A1VjEuzdndE6vXAg&lib=Ms0CmmrMR_PaYaKGVs8OTaxByP_xFMRvX
