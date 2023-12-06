@@ -15,48 +15,38 @@ function listar() {
     echo 'Erro: ' . curl_error($ch);
   } else {
     $data = json_decode($response, true);
-
+    
     if ($data !== null) {
-        $id = 1;
+        $list_event = array(); // Inicialize o array fora do loop
+
         foreach ($data as $evento) {
-            echo "ID: " . $id . "<br>";
-            echo "Nome do evento: " . $nome = $evento['NOME DO EVENTO'] . "<br>";
-            echo "Data: " . $data = $evento['DATA'] . "<br>";
-            echo "Horário de início: " . $horario_inicio = $evento['HORÁRIO - INICIO'] . "<br>";
-            echo "Horário de término: " . $horario_fim =  $evento['HORÁRIO - FIM'] . "<br>";
-            echo "Descrição: " . $desc = $evento['DESCRIÇÃO GERAL DO EVENTO'] . "<br>";
-            echo "Unidade responsável: " . $unidade = $evento['UNIDADE RESPONSÁVEL PELO EVENTO'] . "<br>";
-            echo "Número de participantes: " . $num = $evento['NÚMERO DE PARTICIPANTES'] . "<br>";
-            echo "Local do evento: " . $local = $evento['LOCAL DO EVENTO'] . "<br>";
-            echo "Tipo do evento: " . $tipo = $evento['TIPO DO EVENTO'] . "<br>";
-            echo "Endereço de e-mail: " . $email = $evento['Endereço de e-mail'] . "<br>";
-            
-            $id++;
+            $id = 1;
+            $nome = $evento['NOME DO EVENTO'];
+            $horario_inicio = $evento['HORÁRIO - INICIO'];
+            $horario_fim = $evento['HORÁRIO - FIM'];
+            $desc = $evento['DESCRIÇÃO GERAL DO EVENTO'];
+            $unidade = $evento['UNIDADE RESPONSÁVEL PELO EVENTO'];
+            $num = $evento['NÚMERO DE PARTICIPANTES'];
+            $local = $evento['LOCAL DO EVENTO'];
+            $tipo = $evento['TIPO DO EVENTO'];
+            $email = $evento['Endereço de e-mail'];
 
             $list_even[] = [
                 'id' => $id,
                 'title' => $nome,
                 'start' => $horario_inicio,
-                'end' => $horario_fim,
+                'end' => $horario_fim,  
                 'description' => "Descrição: " . $desc . "<br> ====================== <br> Unidade Responsável: ". $unidade . "<br> Número de participantes:" . $num . " | Tipo de evento:" . $tipo . "<br> Email:". $email . "<br>  Local:". $local
-                
-
-
-
-
             ];
-            echo json_encode($list_even);
-            echo $list_even;
         }
+
+         echo json_encode($list_even); // Envie o JSON uma vez, fora do loop
     } else {
         echo "Erro ao decodificar JSON";
     }
   }
-
-
-
-
 }
 
+listar();
 
 ?>

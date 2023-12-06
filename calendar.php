@@ -17,8 +17,7 @@
 
 
 <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -33,7 +32,7 @@
         selectMirror: true,
         locale: 'pt-br',
         events: {
-          url: './js/coleta.php',
+          url: './js/coleta.php', // Altere o caminho para o arquivo coleta.php
           method: 'GET'
         }
       });
