@@ -23,41 +23,56 @@ body{
 
 #calendar{
 
-    z-index: -1;
+   
 
     height: 0 auto;
     width: 1100px;
-    border: 2px solid red;
+
 
 }
 
-
-.Runn{
-
-        font-size: 40px;
-        color:green;
-
+:root{
+        --fc-border-color: green;                
+        --fc-background-color:black;
+        
+}
+      
+      
+      
+/* Definindo a cor verde para o calendário */
+.fc-event {
+        background-color: green; /* Define a cor de fundo dos eventos como verde */
+        border:2px solid darkgreen; /* Define a cor da borda dos eventos como verde escuro */
+      }
+      
+.fc-daygrid-event {
+  background-color: white; /* Define a cor de fundo dos eventos no modo de visualização de dia */
+  border-color: green; /* Define a cor da borda dos eventos no modo de visualização de dia */
 }
 
-.container-popup{
-
-        height: 40px;
-        width: 60px;
-
-        z-index: 10;
-        position: relative;
-        top: 30%;
-        left: 50%;
-
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 15px;
-        border: 2px solid white;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-
-        flex-direction: column;
-
+.fc-list-item {
+  background-color: green; /* Define a cor de fundo dos eventos no modo de visualização de lista */
+  border-color: darkgreen; /* Define a cor da borda dos eventos no modo de visualização de lista */
 }
+      
+
+.fc-prev-button {
+        background-color: green; /* Define a cor de fundo do botão "Anterior" como verde */
+        color: white; /* Define a cor do texto do botão "Anterior" como branco */
+      }
+      
+.fc-next-button {
+        background-color: green; /* Define a cor de fundo do botão "Próximo" como verde */
+        color: white; /* Define a cor do texto do botão "Próximo" como branco */
+      }
+      
+.fc-today-button {
+        background-color: green; /* Define a cor de fundo do botão "Hoje" como verde */
+        color: white; /* Define a cor do texto do botão "Hoje" como branco */
+      }
+      
+.fc-button {
+        background-color: green; /* Define a cor de fundo dos demais botões como verde */
+        color: white; /* Define a cor do texto dos demais botões como branco */
+      }
+      

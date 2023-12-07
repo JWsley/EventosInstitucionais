@@ -8,13 +8,20 @@
   
     $eventos = array_map(function($evento) {
       return array(
-        'title' => $evento->nome,
-        'start' => date('c', strtotime($evento->data)),
-        'end' => date('c', strtotime($evento->data)),
-        'description' => $evento->desc,
-        'local' => $evento->local,
-        
-            );
+         'title' => $evento->nome,
+         'start' => date('c', strtotime($evento->data)),
+         'end' => date('c', strtotime($evento->data)),
+         'description' => $evento->desc,
+         'local' => $evento->local,
+         'horario_inicio' => $evento->horario_inicio,
+         'horario_fim' => $evento->horario_fim,
+         'unidade' => $evento->unidade,
+         'setor' => $evento->setor,
+         'num' => $evento->num,
+         'tipo' => $evento->tipo,
+         'outros' => $evento->outros,
+         'email' => $evento->email,
+      );
     }, $data->output);
   
     return $eventos_json = json_encode($eventos);
@@ -22,7 +29,7 @@
 
   };
  
-  $getevent = eventSheet();
+
 
 
 ?>
@@ -37,55 +44,45 @@
   
 </head>
 
-
-
 <body>
-<div class="Click-here">Click Here</div>        
-<div class="custom-model-main">
-    <div class="custom-model-inner">        
-    <div class="close-btn">×</div>
-        <div class="custom-model-wrap">
-            <div class="pop-up-content-wrap">
-               Content Here
-            </div>
-        </div>  
-    </div>  
-    <div class="bg-overlay"></div>
-</div> 
 
 <script>
-
-
-    
-    
-
-
     document.addEventListener('DOMContentLoaded', function() {
       var eventos = <?php echo eventSheet() ?>;
 
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'listDay,listWeek'
-        },
+        themeSystem: 'slate', 
+          buttonText: {
+            today: 'Hoje',
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            list: 'Lista'
+          }, 
+          eventColor: 'green',
+          eventTextColor: 'whtie', 
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          },
         views: {
           listDay: { buttonText: 'list day' },
           listWeek: { buttonText: 'list week' }
-        },
+        },  
         initialView: 'dayGridMonth',
         initialDate: '2023-01-12',
         navLinks: true,
-        editable: false, 
+        editable: false,
         locale: 'pt-br',
         dayHeaderFormat: { weekday: 'short', day: 'numeric', month: 'numeric' },
         dayMaxEvents: true,
         eventClick: function(info) {
-            alert(`Descrição: ${info.event.extendedProps.description} \n Local:${info.event.extendedProps.local} `); },
+          alert('Descrição: ' + info.event.extendedProps.description + info.event.extendedProps.start + info.event.extendedProps.end); // Exibe a descrição ao clicar no evento
+        },
         events: eventos
-       
       });
 
       calendar.render();
