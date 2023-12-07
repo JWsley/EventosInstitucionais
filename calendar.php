@@ -1,7 +1,27 @@
-<?php 
+<?php
 
-  include('./js/coleta.php');
-  $events = "coleta.php"
+
+  function eventSheet(){
+    $url = 'https://script.googleusercontent.com/a/macros/ifsuldeminas.edu.br/echo?user_content_key=qCcdmkhRBFjz8xo-H5qlUPTnBCDTeql2Hzhqf0i2G4F9d8mXcnK2oDkzswUms3hMxjTDGe0Ma357QuPkLXsfQoqALUYPGTYYOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKCjEak3mjNoJiXSRvGgDgtmtf450f6mFcuHwklkWyWOSDJZu-DkQFVxrrRhnSdGBKf9WFOmbg3LpT1J6vaJ71QqGDNs2YKChA92zhCJaP5YmvSh_C2I_zquSMSstdfO6boqsuGR6F-yhQ&lib=Ms0CmmrMR_PaYaKGVs8OTaxByP_xFMRvX';
+    $response = file_get_contents($url);
+    $data = json_decode($response);
+  
+    $eventos = array_map(function($evento) {
+      return array(
+        'title' => $evento->nome,
+        'start' => date('c', strtotime($evento->data)),
+        'end' => date('c', strtotime($evento->data)),
+        'description' => $evento->desc
+      );
+    }, $data->output);
+  
+    return $eventos_json = json_encode($eventos);
+  
+
+  };
+ 
+
+
 
 ?>
 
@@ -12,98 +32,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CALENDÁRIO</title>
   <link rel="stylesheet" href="css/style.css">
+  
 </head>
 
+<body>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+      var eventos = <?php echo eventSheet() ?>;
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
+      var calendarEl = document.getElementById('calendar');
 
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'listDay,listWeek'
-      },
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'listDay,listWeek'
+        },
+        views: {
+          listDay: { buttonText: 'list day' },
+          listWeek: { buttonText: 'list week' }
+        },
+        initialView: 'dayGridMonth',
+        initialDate: '2023-01-12',
+        navLinks: true,
+        editable: false, // Torna o calendário somente para visualização
+        locale: 'pt-br',
+        dayHeaderFormat: { weekday: 'short', day: 'numeric', month: 'numeric' },
+        dayMaxEvents: true,
+        eventClick: function(info) {
+          alert('Descrição: ' + info.event.extendedProps.description); // Exibe a descrição ao clicar no evento
+        },
+        events: eventos
+      });
 
-      // customize the button names,
-      // otherwise they'd all just say "list"
-      views: {
-        listDay: { buttonText: 'list day' },
-        listWeek: { buttonText: 'list week' }
-      },
-
-      initialView: 'dayGridMonth',
-      initialDate: '2023-01-12',
-      navLinks: true, // can click day/week names to navigate views
-      editable: true,
-      locale:'pt-br',
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2023-01-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2023-01-07',
-          end: '2023-01-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2023-01-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2023-01-11',
-          end: '2023-01-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T10:30:00',
-          end: '2023-01-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2023-01-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2023-01-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2023-01-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2023-01-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2023-01-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2023-01-28'
-        }
-      ]
+      calendar.render();
     });
-
-    calendar.render();
-  });
-
-    </script>
-
-<body>
+  </script>
 <header class="cabecalho">
 
     <div class="instituto">
