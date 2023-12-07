@@ -11,8 +11,10 @@
         'title' => $evento->nome,
         'start' => date('c', strtotime($evento->data)),
         'end' => date('c', strtotime($evento->data)),
-        'description' => $evento->desc
-      );
+        'description' => $evento->desc,
+        'local' => $evento->local,
+        
+            );
     }, $data->output);
   
     return $eventos_json = json_encode($eventos);
@@ -20,7 +22,7 @@
 
   };
  
-
+  $getevent = eventSheet();
 
 
 ?>
@@ -35,9 +37,29 @@
   
 </head>
 
+
+
 <body>
+<div class="Click-here">Click Here</div>        
+<div class="custom-model-main">
+    <div class="custom-model-inner">        
+    <div class="close-btn">×</div>
+        <div class="custom-model-wrap">
+            <div class="pop-up-content-wrap">
+               Content Here
+            </div>
+        </div>  
+    </div>  
+    <div class="bg-overlay"></div>
+</div> 
 
 <script>
+
+
+    
+    
+
+
     document.addEventListener('DOMContentLoaded', function() {
       var eventos = <?php echo eventSheet() ?>;
 
@@ -56,14 +78,14 @@
         initialView: 'dayGridMonth',
         initialDate: '2023-01-12',
         navLinks: true,
-        editable: false, // Torna o calendário somente para visualização
+        editable: false, 
         locale: 'pt-br',
         dayHeaderFormat: { weekday: 'short', day: 'numeric', month: 'numeric' },
         dayMaxEvents: true,
         eventClick: function(info) {
-          alert('Descrição: ' + info.event.extendedProps.description); // Exibe a descrição ao clicar no evento
-        },
+            alert(`Descrição: ${info.event.extendedProps.description} \n Local:${info.event.extendedProps.local} `); },
         events: eventos
+       
       });
 
       calendar.render();
