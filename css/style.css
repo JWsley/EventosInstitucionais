@@ -42,7 +42,7 @@ body{
 /* Definindo a cor verde para o calendário */
 .fc-event {
         background-color: green; /* Define a cor de fundo dos eventos como verde */
-        border:2px solid darkgreen; /* Define a cor da borda dos eventos como verde escuro */
+        border:4px solid darkgreen; /* Define a cor da borda dos eventos como verde escuro */
       }
       
 .fc-daygrid-event {
@@ -51,28 +51,28 @@ body{
 }
 
 .fc-list-item {
-  background-color: green; /* Define a cor de fundo dos eventos no modo de visualização de lista */
+  background-color: rgb(255, 255, 255); /* Define a cor de fundo dos eventos no modo de visualização de lista */
   border-color: darkgreen; /* Define a cor da borda dos eventos no modo de visualização de lista */
 }
       
 
 .fc-prev-button {
         background-color: green; /* Define a cor de fundo do botão "Anterior" como verde */
-        color: white; /* Define a cor do texto do botão "Anterior" como branco */
+        color: green; /* Define a cor do texto do botão "Anterior" como branco */
       }
       
 .fc-next-button {
         background-color: green; /* Define a cor de fundo do botão "Próximo" como verde */
-        color: white; /* Define a cor do texto do botão "Próximo" como branco */
+        color: green; /* Define a cor do texto do botão "Próximo" como branco */
       }
       
 .fc-today-button {
         background-color: green; /* Define a cor de fundo do botão "Hoje" como verde */
-        color: white; /* Define a cor do texto do botão "Hoje" como branco */
+        color: green; /* Define a cor do texto do botão "Hoje" como branco */
       }
       
 .fc-button {
         background-color: green; /* Define a cor de fundo dos demais botões como verde */
-        color: white; /* Define a cor do texto dos demais botões como branco */
+        color: green; /* Define a cor do texto dos demais botões como branco */
       }
       
