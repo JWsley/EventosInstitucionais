@@ -47,7 +47,6 @@ function eventSheet()
 <body>
 
   <script>
-    
     document.addEventListener('DOMContentLoaded', function() {
       var eventos = <?php echo eventSheet() ?>;
       var today = new Date();
@@ -58,21 +57,21 @@ function eventSheet()
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
 
-      
-     
 
-        
+
+
+
 
 
 
 
         eventRender: function(info) {
           var eventText = info.event.title;
-          if (eventText.length > 15) { 
+          if (eventText.length > 15) {
             info.el.querySelector('.fc-title').innerHTML = eventText.substring(0, 1) + '<br>' + eventText.substring(10);
           }
         },
-        
+
         themeSystem: 'bootstrap5',
         buttonText: {
           today: 'Hoje',
@@ -80,12 +79,12 @@ function eventSheet()
           week: 'Semana',
           day: 'Dia',
           list: 'Lista',
-          prev: '<', 
-          next: '>' 
+          prev: '<',
+          next: '>'
         },
         buttonIcons: {
-          prev: 'left', 
-          next: 'right' 
+          prev: 'left',
+          next: 'right'
         },
         eventColor: 'green',
         eventTextColor: 'white',
@@ -98,9 +97,14 @@ function eventSheet()
           listDay: {
             buttonText: 'list day'
           },
-          listWeek: { 
+          listWeek: {
             buttonText: 'list week'
-          }
+          },
+          multiMonthYear: {
+        type: 'dayGrid',
+        duration: { months: 12 },
+        buttonText: 'Ano'
+      }
         },
         initialView: 'dayGridMonth',
         initialDate: today,
@@ -153,26 +157,27 @@ function eventSheet()
         events: eventos
 
 
-        
+
       });
 
       calendar.render();
     });
-   
+
     document.querySelectorAll('.fc-prev-button, .fc-next-button, .fc-today-button, .fc-dayGridMonth-button, .fc-timeGridWeek-button, .fc-timeGridDay-button, .fc-listWeek-button').forEach(function(button) {
-    button.classList.remove('btn-primary'); // Remove a classe btn-primary
-    button.classList.add('btn', 'btn-success'); // Adiciona a classe btn-success
-  });
-
+      button.classList.remove('btn-primary'); // Remove a classe btn-primary
+      button.classList.add('btn', 'btn-success'); // Adiciona a classe btn-success
+    });
   </script>
-  <header class="cabecalho">
+  
+<div  class="cabecalho">
+  
+      <div class="instituto">
+        <img src="" alt="" class="logo">
+      </div>
+</div>
 
-    <div class="instituto">
-      <img src="" alt="" class="logo">
-    </div>
 
 
-  </header>
 
   <div id="calendar"></div>
 
@@ -190,7 +195,7 @@ function eventSheet()
 
         </div>
         <div class="modal-footer">
-          
+
         </div>
       </div>
     </div>

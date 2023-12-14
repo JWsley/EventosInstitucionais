@@ -22,11 +22,11 @@ body{
 
 
 #calendar{
-
+    position: relative;
    
-
-    height: 0 auto;
-    width: 1100px;
+    top: 5%;
+    height: 70vh;
+    width: 80vw;
 
 
 }
@@ -95,14 +95,40 @@ a{
   text-decoration:none;
 
   color: #1e7e34;
-  font-size: 20px;
+  
 
   background-color: white;
 }
 
 
-.modal-footer{
- 
+.cabecalho{
+
+    height: 60px;
+    background-color: #1e7e34;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
 
 
+    margin-bottom: 15px;
+
+}
+
+.fc-daygrid-event-harness{
+
+  transition: 1s;
+
+}
+.fc-daygrid-event-harness:hover{
+  transition: 1s;
+  cursor:pointer;
+  transform: scale(1.05);
+
+
+
+}
+
+.fc-daygrid-event-harness:hover .fc-event-title{
+    color: black;
 }
