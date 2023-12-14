@@ -30,3 +30,15 @@ body{
 
 
 }
+
+/* Altera a cor das setas "next" e "prev" do calendário */
+.fc-icon-prev, .fc-icon-next {
+  color: red; /* Substitua "red" pela cor desejada */
+}
+
+
+
+.fc-next-button.btn.btn-primary{
+
+  background-color: white;
+}

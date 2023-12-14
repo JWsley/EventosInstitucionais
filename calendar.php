@@ -68,10 +68,14 @@ function eventSheet()
           day: 'Dia',
           list: 'Lista'
         },
+        buttonIcons: {
+          prev: 'left', // Ícone para a seta "prev"
+          next: 'right' // Ícone para a seta "next"
+        },
         eventColor: 'green',
-        eventTextColor: 'whtie',
+        eventTextColor: 'white',
         headerToolbar: {
-          left: 'prev,next today',
+          left: 'prev,next,today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
@@ -85,7 +89,7 @@ function eventSheet()
         },
         initialView: 'dayGridMonth',
         initialDate: '2023-01-12',
-        navLinks: true,
+        navLinks: false,
         editable: false,
         locale: 'pt-br',
         dayHeaderFormat: {
@@ -95,11 +99,38 @@ function eventSheet()
         },
         dayMaxEvents: true,
         eventClick: function(info) {
-          const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
+  const modalTitle = document.getElementById('staticBackdropLabel');
+  const modalBody = document.querySelector('.modal-body');
 
-          modalevent.show();
-        },
-       
+  // Atualize o título do modal com o título do evento
+  modalTitle.textContent = info.event.title;
+
+  
+  const startTime = new Date(info.event.horario_inicio);
+  const endTime = new Date(info.event.horario_fim);
+
+
+  const starTime = startTime.toLocaleTimeString('pt-br',{hour:'2-digit',min:'2-digit'});
+  const endtime = endTime.toLocaleTimeString('pt-br',{hour:'2-digit',min:'2-digit'});
+
+  modalBody.innerHTML = `
+    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
+    <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
+    <p><strong>Horário de início:</strong> ${starTime}</p>
+    <p><strong>Horário de fim:</strong> ${endtime}</p>
+    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}</p>
+    <p><strong>Setor:</strong> ${info.event.extendedProps.setor}</p>
+    <p><strong>Número:</strong> ${info.event.extendedProps.num}</p>
+    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
+    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
+    <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
+  `;
+
+  const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
+  modalevent.show();
+},
+
+
         events: eventos
       });
 
@@ -115,14 +146,9 @@ function eventSheet()
 
   </header>
 
-
-
-
   <div id="calendar"></div>
 
 
-  <!-- modal area -->
-  <!-- Modal -->
   <div class="modal fade" id="modalevent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -131,7 +157,9 @@ function eventSheet()
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...aa
+          <span class="detail" id="nome"></span> 
+          <span class="detail" id="descrição"></span> 
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -143,7 +171,7 @@ function eventSheet()
 
 
 
-  <!-- ------------------------------------ -->
+
 
   <footer class="rodape">
 
