@@ -84,8 +84,13 @@ function eventSheet()
           next: '>' 
         },
         buttonIcons: {
+<<<<<<< HEAD
           prev: 'left', 
           next: 'right' 
+=======
+          prev: 'arrow-left-square-fill', // Ícone para a seta "prev"
+          next: 'arrow-right-square-fill' // Ícone para a seta "next"
+>>>>>>> 2c5fcc934e2c4dad54e2bf9241fa98f04d93cec9
         },
         eventColor: 'green',
         eventTextColor: 'white',
@@ -116,6 +121,7 @@ function eventSheet()
           const modalBody = document.querySelector('.modal-body');
 
           // Atualize o título do modal com o título do evento
+<<<<<<< HEAD
           modalTitle.textContent = info.event.title;
 
 
@@ -143,6 +149,35 @@ function eventSheet()
     <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
     <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
     <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
+=======
+
+
+          const startDateTime = new Date(info.event.start);
+          const endDateTime = new Date(info.event.end);
+
+          // Formatar a hora no formato "hora:minuto"
+
+          // Função para formatar a hora no formato "hora:minuto"
+          function formatTime(dateTime) {
+            const hours = dateTime.getHours().toString().padStart(2, '0');
+            const minutes = dateTime.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
+          }
+          const startTime = formatTime(startDateTime);
+          const endTime = formatTime(endDateTime);
+          modalBody.innerHTML = `
+                    <p><strong>Nome:</strong> ${info.event.title}</p>
+                    <p><strong>DESCRIÇÃO GERAL DO EVENTO:</strong> ${info.event.extendedProps.description}</p>
+                    <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
+                    <p><strong>Horário de início:</strong> ${startTime}</p>
+                    <p><strong>Horário de fim:</strong> ${endTime}</p>
+                    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}</p>
+                    <p><strong>Setor:</strong> ${info.event.extendedProps.setor}</p>
+                    <p><strong>Número:</strong> ${info.event.extendedProps.num}</p>
+                    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
+                    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
+                    <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
+>>>>>>> 2c5fcc934e2c4dad54e2bf9241fa98f04d93cec9
   `;
 
           const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
@@ -181,9 +216,10 @@ function eventSheet()
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Detalhes do evento</h1>
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">DETALHES DO EVENTO</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+<<<<<<< HEAD
         <div class="modal-body">
           <span class="detail" id="nome"></span>
           <span class="detail" id="descrição"></span>
@@ -191,6 +227,11 @@ function eventSheet()
         </div>
         <div class="modal-footer">
           
+=======
+        <div class="modal-body"></div>
+        <div class="modal-footer" style="background: green;">
+
+>>>>>>> 2c5fcc934e2c4dad54e2bf9241fa98f04d93cec9
         </div>
       </div>
     </div>
