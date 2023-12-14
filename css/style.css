@@ -32,13 +32,67 @@ body{
 }
 
 /* Altera a cor das setas "next" e "prev" do calendário */
-.fc-icon-prev, .fc-icon-next {
-  color: red; /* Substitua "red" pela cor desejada */
+/* Altera a cor de fundo do cabeçalho do calendário para verde */
+
+
+/* Altera a cor do texto dos eventos para branco */
+.fc-event {
+  color: #fff;
+}
+
+/* Altera a cor de fundo dos eventos para verde */
+.fc-event {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+/* Altera a cor de fundo do dia atual para verde */
+.fc-day-today {
+  background-color: #d4edda; /* Uma tonalidade mais clara de verde */
+}
+
+/* Altera a cor de fundo do dia selecionado para verde */
+.fc-day-selected {
+  background-color: #c3e6cb; /* Uma tonalidade mais clara de verde */
+}
+/* Altera a cor de fundo e a cor do texto dos botões do FullCalendar para verde */
+.fc .fc-button {
+  background-color: #28a745; /* Verde */
+  border-color: #28a745; /* Verde */
+  color: #fff; /* Texto branco */
+}
+
+/* Altera a cor de fundo dos botões do FullCalendar para verde quando hover */
+.fc .fc-button:hover {
+  background-color: #218838; /* Verde mais escuro */
+  border-color: #1e7e34; /* Verde mais escuro */
+  color: #fff; /* Texto branco */
+}
+
+#calendar .fc-header-toolbar .fc-button-primary {
+  background-color: #28a745; /* Verde */
+  border-color: #28a745; /* Verde */
+  color: #fff; /* Texto branco */
+}
+
+/* Altera a cor de fundo dos botões de navegação do FullCalendar para verde quando hover */
+#calendar .fc-header-toolbar .fc-button-primary:hover {
+  background-color: #218838; /* Verde mais escuro */
+  border-color: #1e7e34; /* Verde mais escuro */
+  color: #fff; /* Texto branco */
 }
 
 
+.modal-footer{
 
-.fc-next-button.btn.btn-primary{
+  background-color: #1e7e34;
 
-  background-color: white;
+}
+
+
+a{
+  text-decoration:none;
+
+  color: #1e7e34;
+  font-size: 20px;
 }

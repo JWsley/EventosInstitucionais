@@ -47,73 +47,92 @@ function eventSheet()
 <body>
 
   <script>
+    
     document.addEventListener('DOMContentLoaded', function() {
       var eventos = <?php echo eventSheet() ?>;
+      var today = new Date();
+
+
 
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
 
+      
+     
+
+        
+
+
+
+
         eventRender: function(info) {
           var eventText = info.event.title;
-          if (eventText.length > 15) { // Defina o comprimento máximo para quebrar a linha conforme necessário
+          if (eventText.length > 15) { 
             info.el.querySelector('.fc-title').innerHTML = eventText.substring(0, 1) + '<br>' + eventText.substring(10);
           }
         },
+        
         themeSystem: 'bootstrap5',
         buttonText: {
           today: 'Hoje',
           month: 'Mês',
           week: 'Semana',
           day: 'Dia',
-          list: 'Lista'
+          list: 'Lista',
+          prev: '<', 
+          next: '>' 
         },
         buttonIcons: {
-          prev: 'left', // Ícone para a seta "prev"
-          next: 'right' // Ícone para a seta "next"
+          prev: 'left', 
+          next: 'right' 
         },
         eventColor: 'green',
         eventTextColor: 'white',
         headerToolbar: {
           left: 'prev,next,today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay'
         },
         views: {
           listDay: {
             buttonText: 'list day'
           },
-          listWeek: {
+          listWeek: { 
             buttonText: 'list week'
           }
         },
         initialView: 'dayGridMonth',
-        initialDate: '2023-01-12',
+        initialDate: today,
         navLinks: false,
         editable: false,
         locale: 'pt-br',
         dayHeaderFormat: {
-          weekday: 'short',
-          day: 'numeric',
-          month: 'numeric'
+          weekday: 'short'
         },
         dayMaxEvents: true,
         eventClick: function(info) {
-  const modalTitle = document.getElementById('staticBackdropLabel');
-  const modalBody = document.querySelector('.modal-body');
+          const modalTitle = document.getElementById('staticBackdropLabel');
+          const modalBody = document.querySelector('.modal-body');
 
-  // Atualize o título do modal com o título do evento
-  modalTitle.textContent = info.event.title;
-
-  
-  const startTime = new Date(info.event.horario_inicio);
-  const endTime = new Date(info.event.horario_fim);
+          // Atualize o título do modal com o título do evento
+          modalTitle.textContent = info.event.title;
 
 
-  const starTime = startTime.toLocaleTimeString('pt-br',{hour:'2-digit',min:'2-digit'});
-  const endtime = endTime.toLocaleTimeString('pt-br',{hour:'2-digit',min:'2-digit'});
+          const startTime = new Date(info.event.horario_inicio);
+          const endTime = new Date(info.event.horario_fim);
 
-  modalBody.innerHTML = `
+
+          const starTime = startTime.toLocaleTimeString('pt-br', {
+            hour: '2-digit',
+            min: '2-digit'
+          });
+          const endtime = endTime.toLocaleTimeString('pt-br', {
+            hour: '2-digit',
+            min: '2-digit'
+          });
+
+          modalBody.innerHTML = `
     <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
     <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
     <p><strong>Horário de início:</strong> ${starTime}</p>
@@ -126,16 +145,25 @@ function eventSheet()
     <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
   `;
 
-  const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
-  modalevent.show();
-},
+          const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
+          modalevent.show();
+        },
 
 
         events: eventos
+
+
+        
       });
 
       calendar.render();
     });
+   
+    document.querySelectorAll('.fc-prev-button, .fc-next-button, .fc-today-button, .fc-dayGridMonth-button, .fc-timeGridWeek-button, .fc-timeGridDay-button, .fc-listWeek-button').forEach(function(button) {
+    button.classList.remove('btn-primary'); // Remove a classe btn-primary
+    button.classList.add('btn', 'btn-success'); // Adiciona a classe btn-success
+  });
+
   </script>
   <header class="cabecalho">
 
@@ -157,13 +185,12 @@ function eventSheet()
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <span class="detail" id="nome"></span> 
-          <span class="detail" id="descrição"></span> 
-          
+          <span class="detail" id="nome"></span>
+          <span class="detail" id="descrição"></span>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Understood</button>
+          
         </div>
       </div>
     </div>
@@ -188,9 +215,9 @@ function eventSheet()
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-  <script src="js/index.global.min.js"></script>
-
   <script src="./fullcalendar-6.1.10/packages/bootstrap5/index.global.min.js"></script>
+  <script src="js/index.global.js"></script>
+
   <script src="js/core/locales/pt-br.global.min.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
