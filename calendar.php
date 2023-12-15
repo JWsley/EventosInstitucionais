@@ -41,7 +41,7 @@ function eventSheet()
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
-
+  <script src="js/moment.js"></script>
 </head>
 
 <body>
@@ -50,18 +50,12 @@ function eventSheet()
     document.addEventListener('DOMContentLoaded', function() {
       var eventos = <?php echo eventSheet() ?>;
       var today = new Date();
-
+      var prevClickedDay = null;
 
 
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
-
-
-
-
-
-
 
 
 
@@ -101,10 +95,19 @@ function eventSheet()
             buttonText: 'list week'
           },
           multiMonthYear: {
-        type: 'dayGrid',
-        duration: { months: 12 },
-        buttonText: 'Ano'
-      }
+            type: 'dayGrid',
+            duration: {
+              months: 12
+            },
+            buttonText: 'Ano'
+          },
+          validRange: function(nowDate) {
+            var thisYear = nowDate.getFullYear();
+            return {
+              start: thisYear + '-01-01', // Define a data de início permitida com base no ano atual
+              end: thisYear + '-12-31' // Define a data de fim permitida com base no ano atual
+            };
+          },
         },
         initialView: 'dayGridMonth',
         initialDate: today,
@@ -115,6 +118,16 @@ function eventSheet()
           weekday: 'short'
         },
         dayMaxEvents: true,
+
+
+        dateClick: function(info) {
+          if (prevClickedDay) {
+            prevClickedDay.classList.remove('day-select');
+          }
+          info.dayEl.classList.add('day-select');
+          prevClickedDay = info.dayEl;
+
+        },
         eventClick: function(info) {
           const modalTitle = document.getElementById('staticBackdropLabel');
           const modalBody = document.querySelector('.modal-body');
@@ -123,33 +136,35 @@ function eventSheet()
           modalTitle.textContent = info.event.title;
 
 
-          const startTime = new Date(info.event.horario_inicio);
-          const endTime = new Date(info.event.horario_fim);
+
+          const formatTime = (timeString) => {
+            const time = new Date(timeString);
+            const hours = (time.getUTCHours() < 10 ? '0' + time.getUTCHours() : time.getUTCHours());
+            const minutes = (time.getUTCMinutes() < 10 ? '0' + time.getUTCMinutes() : time.getUTCMinutes());
+            return `${hours}:${minutes}`;
+          };
+
+          const startTime = formatTime(info.event.horario_inicio);
+          const endTime = formatTime(info.event.horario_fim);
 
 
-          const starTime = startTime.toLocaleTimeString('pt-br', {
-            hour: '2-digit',
-            min: '2-digit'
-          });
-          const endtime = endTime.toLocaleTimeString('pt-br', {
-            hour: '2-digit',
-            min: '2-digit'
-          });
-
+          console.log(typeof(startTime));
           modalBody.innerHTML = `
-    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
-    <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
-    <p><strong>Horário de início:</strong> ${starTime}</p>
-    <p><strong>Horário de fim:</strong> ${endtime}</p>
-    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}</p>
-    <p><strong>Setor:</strong> ${info.event.extendedProps.setor}</p>
-    <p><strong>Número:</strong> ${info.event.extendedProps.num}</p>
-    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
-    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
-    <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
-  `;
+  
+  <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
+  <p><strong>Horário de início:</strong> ${startTime}</p>
+  <p><strong>Horário de término:</strong> ${endTime}</p>
+  <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
+  <hr>
 
+  
+  <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
+`;
           const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
+
+
+
+
           modalevent.show();
         },
 
@@ -168,28 +183,29 @@ function eventSheet()
       button.classList.add('btn', 'btn-success'); // Adiciona a classe btn-success
     });
   </script>
+
+  <div class="cabecalho">
+
+    <div class="instituto">
+      <img src="" alt="" class="logo">
+    </div>
+    <div class="titulo-principal"><h1 class="titulo">EVENTOS INSTITUCIONAIS</h1></div>
+  </div>
+
   
-<div  class="cabecalho">
   
-      <div class="instituto">
-        <img src="" alt="" class="logo">
-      </div>
-</div>
-
-
-
 
   <div id="calendar"></div>
 
 
-  <div class="modal fade" id="modalevent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+  <div class="modal fade"  id="modalevent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog"  data-tilt data-tilt-axis="x">
+      <div class="modal-content" >
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Detalhes do evento</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body"></div>
           <span class="detail" id="nome"></span>
           <span class="detail" id="descrição"></span>
 
@@ -216,9 +232,9 @@ function eventSheet()
 
   </footer>
 
-
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  
+    <script src="js/vanilla-tilt.js"></script>
 
   <script src="./fullcalendar-6.1.10/packages/bootstrap5/index.global.min.js"></script>
   <script src="js/index.global.js"></script>

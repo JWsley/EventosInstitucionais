@@ -3,6 +3,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
@@ -82,6 +83,19 @@ body{
   color: #fff; /* Texto branco */
 }
 
+.modal-dialog{
+    height: 120px;
+    width: 600px;
+    top: 25%;
+
+}
+
+
+.mmodal-content{
+  border-radius: 0px;
+
+}
+
 
 .modal-footer{
 
@@ -103,17 +117,28 @@ a{
 
 .cabecalho{
 
-    height: 60px;
+    height: 120px;
     background-color: #1e7e34;
     width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    margin-bottom: 15px;
 
+    flex-direction: row;
+
+    border-bottom: 3px solid black;
 }
+
+.titulo{
+
+  color: white;
+}
+
 
 .fc-daygrid-event-harness{
 
@@ -131,4 +156,54 @@ a{
 
 .fc-daygrid-event-harness:hover .fc-event-title{
     color: black;
+}
+
+.fc-day .fc-day-event{
+  border: 2px solid black;
+  background-color: transparent !important;
+}
+
+.fc-daygrid-day-frame{
+
+  border: 2px solid green;
+  border-radius: 5px;
+
+  background-size: cover;
+  
+}.fc-daygrid-day-frame:hover{
+  transition: 1s ease-in-out;
+    transform: scale(1.04);
+  cursor: pointer;
+
+}
+
+
+.fc-daygrid-day-number{
+
+  background: none;
+  border: none;
+
+}
+
+
+
+.day-select {
+  
+  z-index: 1;
+ background-color: rgb(238, 250, 225); /* Começa sem outline */
+  transition:  0.1s ease-in-out; /* Adiciona uma transição de 0.2 segundos */
+  box-sizing: border-box; /* Faz com que o outline não afete o tamanho do elemento */
+  padding: 2px; /* Adiciona um padding para garantir que o outline não interfira com o conteúdo */
+}
+
+
+
+thead{
+  background-color: #1e7e34;
+
+}
+
+.fc-col-header-cell-cushion{
+  background: none;
+  color: white;
 }
