@@ -130,36 +130,38 @@ function eventSheet()
         },
         eventClick: function(info) {
           const modalTitle = document.getElementById('staticBackdropLabel');
-          const modalBody = document.querySelector('.modal-body');
+            const modalBody = document.querySelector('.modal-body');
 
-          // Atualize o título do modal com o título do evento
-          modalTitle.textContent = info.event.title;
+  // Atualize o título do modal com o título do evento
+           modalTitle.textContent = info.event.title;
 
+         const startTime = new Date(info.event.extendedProps.horario_inicio);
+          const endTime = new Date(info.event.extendedProps.horario_fim);
 
+  const starTime = startTime.toLocaleTimeString('pt-br', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  const endtTime = endTime.toLocaleTimeString('pt-br', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
 
-          const formatTime = (timeString) => {
-            const time = new Date(timeString);
-            const hours = (time.getUTCHours() < 10 ? '0' + time.getUTCHours() : time.getUTCHours());
-            const minutes = (time.getUTCMinutes() < 10 ? '0' + time.getUTCMinutes() : time.getUTCMinutes());
-            return `${hours}:${minutes}`;
-          };
-
-          const startTime = formatTime(info.event.horario_inicio);
-          const endTime = formatTime(info.event.horario_fim);
-
-
-          console.log(typeof(startTime));
-          modalBody.innerHTML = `
-  
-  <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
-  <p><strong>Horário de início:</strong> ${startTime}</p>
-  <p><strong>Horário de término:</strong> ${endTime}</p>
-  <p><strong>Email:</strong> ${info.event.extendedProps.email}</p>
-  <hr>
-
-  
-  <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
-`;
+  modalBody.innerHTML = `
+    <p><strong>Setor Responsavel:</strong> ${info.event.extendedProps.setor}</p>
+    <div class="horario-container">
+      <p><strong>Horário de início:</strong> ${starTime}</p>
+      <p><strong>Horário de fim:</strong> ${endtTime}</p>
+    </div>
+    <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
+    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}</p>
+    <p><strong>Quantidade de pessoas:</strong> ${info.event.extendedProps.num}</p>
+    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
+    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
+    <p><strong>Email :</strong> ${info.event.extendedProps.email}</p>
+    <hr>
+    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
+  `;
           const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
 
 
