@@ -42,6 +42,7 @@ function eventSheet()
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/moment.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -130,37 +131,42 @@ function eventSheet()
         },
         eventClick: function(info) {
           const modalTitle = document.getElementById('staticBackdropLabel');
-            const modalBody = document.querySelector('.modal-body');
+          const modalBody = document.querySelector('.modal-body');
 
-  // Atualize o título do modal com o título do evento
-           modalTitle.textContent = info.event.title;
+          // Atualize o título do modal com o título do evento
+          modalTitle.textContent = info.event.title;
 
-         const startTime = new Date(info.event.extendedProps.horario_inicio);
+          const startTime = new Date(info.event.extendedProps.horario_inicio);
           const endTime = new Date(info.event.extendedProps.horario_fim);
 
-  const starTime = startTime.toLocaleTimeString('pt-br', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-  const endtTime = endTime.toLocaleTimeString('pt-br', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
+          const starTime = startTime.toLocaleTimeString('pt-br', {
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          const endtTime = endTime.toLocaleTimeString('pt-br', {
+            hour: '2-digit',
+            minute: '2-digit'
+          });
 
-  modalBody.innerHTML = `
+          modalBody.innerHTML = `
     <p><strong>Setor Responsavel:</strong> ${info.event.extendedProps.setor}</p>
-    <div class="horario-container">
-      <p><strong>Horário de início:</strong> ${starTime}</p>
-      <p><strong>Horário de fim:</strong> ${endtTime}</p>
+    <div class="conthr">
+
+      <div class="img_cont"> <strong class="hour-title">Horários</strong><img class="icon_clock" src="assets/img/clock.png"></div>
+
+      <div class="horario-container" >
+      <strong style="color:#1e7e34; margin:5px;">INICIO:</strong> ${starTime}.
+      <strong style="color:#1e7e34; margin:5px;">FIM:</strong> ${endtTime}.
+      </div>
     </div>
-    <p><strong>Local:</strong> ${info.event.extendedProps.local}</p>
-    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}</p>
-    <p><strong>Quantidade de pessoas:</strong> ${info.event.extendedProps.num}</p>
-    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}</p>
-    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}</p>
-    <p><strong>Email :</strong> ${info.event.extendedProps.email}</p>
+    <p><strong>Local:</strong> ${info.event.extendedProps.local}.</p>
+    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}.</p>
+    <p><strong>Quantidade de pessoas:</strong> ${info.event.extendedProps.num}.</p>
+    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}.</p>
+    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}.</p>
+    <p><strong>Email :</strong> ${info.event.extendedProps.email}.</p>
     <hr>
-    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}</p>
+    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}.</p>
   `;
           const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
 
@@ -191,32 +197,34 @@ function eventSheet()
     <div class="instituto">
       <img src="" alt="" class="logo">
     </div>
-    <div class="titulo-principal"><h1 class="titulo">EVENTOS INSTITUCIONAIS</h1></div>
+    <div class="titulo-principal">
+      <h1 class="titulo">EVENTOS INSTITUCIONAIS</h1>
+    </div>
   </div>
 
-  
-  
+
+
 
   <div id="calendar"></div>
 
 
-  <div class="modal fade"  id="modalevent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog"  data-tilt data-tilt-axis="x">
-      <div class="modal-content" >
+  <div class="modal fade" id="modalevent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" data-tilt data-tilt-axis="x">
+      <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Detalhes do evento</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body"></div>
-          <span class="detail" id="nome"></span>
-          <span class="detail" id="descrição"></span>
+        <span class="detail" id="nome"></span>
+        <span class="detail" id="descrição"></span>
 
-        </div>
-        <div class="modal-footer">
-
-        </div>
+      </div>
+      <div class="modal-footer">
+            <img src="./assets/img/iflogo.png" class="if_logo" alt="IF_logotipo">
       </div>
     </div>
+  </div>
   </div>
 
 
@@ -235,8 +243,8 @@ function eventSheet()
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  
-    <script src="js/vanilla-tilt.js"></script>
+
+  <script src="js/vanilla-tilt.js"></script>
 
   <script src="./fullcalendar-6.1.10/packages/bootstrap5/index.global.min.js"></script>
   <script src="js/index.global.js"></script>
