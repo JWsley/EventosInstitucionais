@@ -133,8 +133,27 @@ function eventSheet()
           const modalTitle = document.getElementById('staticBackdropLabel');
           const modalBody = document.querySelector('.modal-body');
 
-          // Atualize o título do modal com o título do evento
-          modalTitle.textContent = info.event.title;
+          function formatacao(arg, limite) {
+            if (typeof arg !== 'string') {
+              return ''; // Retorna uma string vazia se arg não for uma string
+            }
+
+            let formattedString = '';
+            for (let i = 0; i < arg.length; i += limite) {
+              formattedString += arg.substring(i, i + limite) + '\n'; // Adiciona quebra de linha sem a tag <br>
+            }
+            return formattedString;
+          }
+
+
+          var google_local = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(info.event.extendedProps.local)}`;
+
+
+
+          const content_title = formatacao(info.event.title, 30);
+
+
+          modalTitle.innerHTML = String(content_title);
 
           const startTime = new Date(info.event.extendedProps.horario_inicio);
           const endTime = new Date(info.event.extendedProps.horario_fim);
@@ -148,8 +167,19 @@ function eventSheet()
             minute: '2-digit'
           });
 
+
+          const setor_responsavel_frmtd = formatacao(info.event.extendedProps.setor, 39);
+          const local_frmtd = formatacao(info.event.extendedProps.localizacao, 39);
+          const unidade_frmtd = formatacao(info.event.extendedProps.unidade, 39);
+          const num_frmtd = formatacao(info.event.extendedProps.num, 39);
+          const tipo_frmtd = formatacao(info.event.extendedProps.tipo, 39);
+          const outros_frmtd = formatacao(info.event.extendedProps.outros, 39);
+          const email_frmtd = formatacao(info.event.extendedProps.email, 39);
+          const desc_frmtd = formatacao(info.event.extendedProps.description, 39);
+          console.log(google_local);
+
           modalBody.innerHTML = `
-    <p><strong>Setor Responsavel:</strong> ${info.event.extendedProps.setor}</p>
+    <p><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}</p>
     <div class="conthr">
 
       <div class="img_cont"> <strong class="hour-title">Horários</strong><img class="icon_clock" src="assets/img/clock.png"></div>
@@ -159,14 +189,15 @@ function eventSheet()
       <strong style="color:#1e7e34; margin:5px;">FIM:</strong> ${endtTime}.
       </div>
     </div>
-    <p><strong>Local:</strong> ${info.event.extendedProps.local}.</p>
-    <p><strong>Unidade:</strong> ${info.event.extendedProps.unidade}.</p>
-    <p><strong>Quantidade de pessoas:</strong> ${info.event.extendedProps.num}.</p>
-    <p><strong>Tipo:</strong> ${info.event.extendedProps.tipo}.</p>
-    <p><strong>Outros:</strong> ${info.event.extendedProps.outros}.</p>
-    <p><strong>Email :</strong> ${info.event.extendedProps.email}.</p>
+    <p><strong>Local do evento:</strong> <a href="${google_local}" target="_blank">${info.event.extendedProps.local}</a>.</p>
+    <p><strong>Unidade:</strong> ${unidade_frmtd}.</p>
+    <p><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
+    <p><strong>Tipo:</strong> ${tipo_frmtd}.</p>
+    <p><strong>Outros:</strong> ${outros_frmtd}.</p>
+    <p><strong>Email :</strong> ${email_frmtd}.</p>
     <hr>
-    <p><strong>Descrição:</strong> ${info.event.extendedProps.description}.</p>
+    <strong style="color:#1e7e34;border-bottom:2px solid #1e7e34;">Descrição</strong>
+    <p>${desc_frmtd}.</p>
   `;
           const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
 
@@ -221,7 +252,7 @@ function eventSheet()
 
       </div>
       <div class="modal-footer">
-            <img src="./assets/img/iflogo.png" class="if_logo" alt="IF_logotipo">
+        <img src="./assets/img/iflogo.png" class="if_logo" alt="IF_logotipo">
       </div>
     </div>
   </div>
