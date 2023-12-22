@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CALENDÁRIO</title>
+  <title>EVENTOS INSTITUCIONAIS</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -17,7 +16,6 @@
 </head>
 
 <body>
-
   <script>
     function eventSheet(callback) {
       fetch('https://script.googleusercontent.com/a/macros/ifsuldeminas.edu.br/echo?user_content_key=qCcdmkhRBFjz8xo-H5qlUPTnBCDTeql2Hzhqf0i2G4F9d8mXcnK2oDkzswUms3hMxjTDGe0Ma357QuPkLXsfQoqALUYPGTYYOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKCjEak3mjNoJiXSRvGgDgtmtf450f6mFcuHwklkWyWOSDJZu-DkQFVxrrRhnSdGBKf9WFOmbg3LpT1J6vaJ71QqGDNs2YKChA92zhCJaP5YmvSh_C2I_zquSMSstdfO6boqsuGR6F-yhQ&lib=Ms0CmmrMR_PaYaKGVs8OTaxByP_xFMRvX')
@@ -54,12 +52,7 @@
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          eventRender: function (info) {
-            var eventText = info.event.title;
-            if (eventText.length > 15) {
-              info.el.querySelector('.fc-title').innerHTML = eventText.substring(0, 1) + '<br>' + eventText.substring(10);
-            }
-          },
+
           themeSystem: 'bootstrap5',
           buttonText: {
             today: 'Hoje',
@@ -169,7 +162,7 @@
             console.log(google_local);
 
             modalBody.innerHTML = `
-    <p><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}</p>
+   
     <div class="conthr">
 
       <div class="img_cont"> <strong class="hour-title">Horários</strong><img class="icon_clock" src="assets/img/clock.png"></div>
@@ -179,11 +172,11 @@
       <strong style="color:#1e7e34; margin:5px;">FIM:</strong> ${endtTime}.
       </div>
     </div>
+    <p><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}</p>
     <p><strong>Local do evento:</strong> <a href="${google_local}" target="_blank">${info.event.extendedProps.local}</a>.</p>
     <p><strong>Unidade:</strong> ${unidade_frmtd}.</p>
     <p><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
-    <p><strong>Tipo:</strong> ${tipo_frmtd}.</p>
-    <p><strong>Outros:</strong> ${outros_frmtd}.</p>
+    <p><strong>Tipo:  </strong>${tipo_frmtd} ${outros_frmtd}.</p>
     <p><strong>Email :</strong> ${email_frmtd}.</p>
     <hr>
     <strong style="color:#1e7e34;border-bottom:2px solid #1e7e34;">Descrição</strong>

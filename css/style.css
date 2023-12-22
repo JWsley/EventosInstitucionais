@@ -230,6 +230,12 @@ thead{
 
 }
 
+.modal-title{
+
+ font-size: 50px;
+ font-weight: 100px;
+
+}
 
 
 .hour-title{
@@ -272,4 +278,11 @@ thead{
   height: 30px;
   width: auto;
   left: 15px; 
+}
+
+
+.fc-event-time{
+
+  display: none;
+
 }
