@@ -47,10 +47,15 @@
     document.addEventListener('DOMContentLoaded', function () {
       eventSheet(function (eventos) {
         var today = new Date();
-        var prevClickedDay = null;
-
+        var prevClickedDay = null;  
+        
         var calendarEl = document.getElementById('calendar');
 
+        var cabecalho = document.getElementById('cabecalho');
+        var loader = document.getElementById('loader');
+
+        loader.style.display="none";
+        cabecalho.style.display="flex";
         var calendar = new FullCalendar.Calendar(calendarEl, {
 
           themeSystem: 'bootstrap5',
@@ -90,9 +95,12 @@
             },
             validRange: function (nowDate) {
               var thisYear = nowDate.getFullYear();
+              var minDate = new Date(thisYear, 0, 1); // Primeiro dia do ano
+              var maxDate = new Date(thisYear, 11, 31); // Último dia do ano
+
               return {
-                start: thisYear + '-01-01',
-                end: thisYear + '-12-31'
+                start: minDate,
+                end: maxDate
               };
             },
           },
@@ -111,6 +119,8 @@
             }
             info.dayEl.classList.add('day-select');
             prevClickedDay = info.dayEl;
+            calendar.gotoDate (info.date);
+            
           },
           eventClick: function (info) {
             const modalTitle = document.getElementById('staticBackdropLabel');
@@ -201,8 +211,12 @@
       });
     });
   </script>
+  <div class="loader" id="loader">
+          <img src="assets/img/loading.gif" style="height: auto; width: 80%;" alt="">
+  </div>
 
-  <div class="cabecalho">
+
+  <div class="cabecalho" id="cabecalho" style="display: none;">
 
     <div class="instituto">
       <img src="" alt="" class="logo">

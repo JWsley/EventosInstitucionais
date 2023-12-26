@@ -21,8 +21,19 @@ body{
 
 }
 
+.loader{
+    transition: 1s;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 #calendar{
+    transition: 1s;
     position: relative;
    
     top: 5%;
@@ -32,54 +43,50 @@ body{
 
 }
 
-/* Altera a cor das setas "next" e "prev" do calendário */
-/* Altera a cor de fundo do cabeçalho do calendário para verde */
 
-
-/* Altera a cor do texto dos eventos para branco */
 .fc-event {
   color: #fff;
 }
 
-/* Altera a cor de fundo dos eventos para verde */
+
 .fc-event {
   background-color: #28a745;
   border-color: #28a745;
 }
 
-/* Altera a cor de fundo do dia atual para verde */
+
 .fc-day-today {
   background-color: #d4edda; /* Uma tonalidade mais clara de verde */
 }
 
 /* Altera a cor de fundo do dia selecionado para verde */
 .fc-day-selected {
-  background-color: #c3e6cb; /* Uma tonalidade mais clara de verde */
+  background-color: #5fe7ae; /* Uma tonalidade mais clara de verde */
 }
 /* Altera a cor de fundo e a cor do texto dos botões do FullCalendar para verde */
 .fc .fc-button {
-  background-color: #28a745; /* Verde */
-  border-color: #28a745; /* Verde */
+  background-color: #2b825d; /* Verde */
+  border-color: #2b825d; /* Verde */
   color: #fff; /* Texto branco */
 }
 
 /* Altera a cor de fundo dos botões do FullCalendar para verde quando hover */
 .fc .fc-button:hover {
   background-color: #218838; /* Verde mais escuro */
-  border-color: #1e7e34; /* Verde mais escuro */
+  border-color: #2b825d; /* Verde mais escuro */
   color: #fff; /* Texto branco */
 }
 
 #calendar .fc-header-toolbar .fc-button-primary {
-  background-color: #28a745; /* Verde */
-  border-color: #28a745; /* Verde */
+  background-color: #2b825d; /* Verde */
+  border-color: #2b825d; /* Verde */
   color: #fff; /* Texto branco */
 }
 
 /* Altera a cor de fundo dos botões de navegação do FullCalendar para verde quando hover */
 #calendar .fc-header-toolbar .fc-button-primary:hover {
-  background-color: #218838; /* Verde mais escuro */
-  border-color: #1e7e34; /* Verde mais escuro */
+  background-color: #28a745; /* Verde mais escuro */
+  border-color: #28a745; /* Verde mais escuro */
   color: #fff; /* Texto branco */
 }
 
@@ -107,7 +114,7 @@ body{
 
 .modal-footer{
 
-  background-color: #1e7e34;
+  background-color: #2b825d;
   height: 45px;
 
 
@@ -117,7 +124,7 @@ body{
 a{
   text-decoration:none;
 
-  color: #1e7e34;
+  color: #2b825d;
   
 
   background-color: white;
@@ -125,9 +132,9 @@ a{
 
 
 .cabecalho{
-
+    transition: 1s;
     height: 120px;
-    background-color: #1e7e34;
+    background-color: #2b825d;
     width: 100vw;
     position: absolute;
     top: 0;
@@ -141,6 +148,10 @@ a{
     flex-direction: row;
 
     border-bottom: 3px solid black;
+
+
+
+   
 }
 
 .titulo{
@@ -157,7 +168,7 @@ a{
 .fc-daygrid-event-harness:hover{
   transition: 1s;
   cursor:pointer;
-  transform: scale(1.05);
+
 
 
 
@@ -199,7 +210,7 @@ a{
 .day-select {
   
   z-index: 1;
- background-color: rgb(238, 250, 225); /* Começa sem outline */
+ background-color: rgb(205, 235, 174); /* Começa sem outline */
   transition:  0.1s ease-in-out; /* Adiciona uma transição de 0.2 segundos */
   box-sizing: border-box; /* Faz com que o outline não afete o tamanho do elemento */
   padding: 2px; /* Adiciona um padding para garantir que o outline não interfira com o conteúdo */
@@ -208,7 +219,7 @@ a{
 
 
 thead{
-  background-color: #1e7e34;
+  background-color: #2b825d;
 
 }
 
@@ -241,9 +252,9 @@ thead{
 .hour-title{
 
   font-size: 20px;
-  color: #1e7e34;
+  color: #2b825d;
   font-weight: 200px;
-  border-bottom: 2px solid #1e7e34;
+  border-bottom: 2px solid #2b825d;
 
 }
 
@@ -258,7 +269,7 @@ thead{
 
   height: 60px;
   width: 95%;
-  border: 2px solid #1e7e34;
+  border: 2px solid #2b825d;
   margin-bottom: 5px ;
   display: flex;
   flex-direction: column;
