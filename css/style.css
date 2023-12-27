@@ -30,6 +30,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
 }
 #calendar{
@@ -56,38 +57,38 @@ body{
 
 
 .fc-day-today {
-  background-color: #d4edda; /* Uma tonalidade mais clara de verde */
+  background-color: #d4edda; 
 }
 
-/* Altera a cor de fundo do dia selecionado para verde */
+
 .fc-day-selected {
-  background-color: #5fe7ae; /* Uma tonalidade mais clara de verde */
-}
-/* Altera a cor de fundo e a cor do texto dos botões do FullCalendar para verde */
-.fc .fc-button {
-  background-color: #2b825d; /* Verde */
-  border-color: #2b825d; /* Verde */
-  color: #fff; /* Texto branco */
+  background-color: #5fe7ae; 
 }
 
-/* Altera a cor de fundo dos botões do FullCalendar para verde quando hover */
+.fc .fc-button {
+  background-color: #2b825d;
+  border-color: #2b825d;
+  color: #fff;
+}
+
+
 .fc .fc-button:hover {
-  background-color: #218838; /* Verde mais escuro */
-  border-color: #2b825d; /* Verde mais escuro */
-  color: #fff; /* Texto branco */
+  background-color: #218838; 
+  border-color: #2b825d; 
+  color: #fff; 
 }
 
 #calendar .fc-header-toolbar .fc-button-primary {
-  background-color: #2b825d; /* Verde */
-  border-color: #2b825d; /* Verde */
-  color: #fff; /* Texto branco */
+  background-color: #2b825d; 
+  border-color: #2b825d; 
+  color: #fff; 
 }
 
-/* Altera a cor de fundo dos botões de navegação do FullCalendar para verde quando hover */
+
 #calendar .fc-header-toolbar .fc-button-primary:hover {
-  background-color: #28a745; /* Verde mais escuro */
-  border-color: #28a745; /* Verde mais escuro */
-  color: #fff; /* Texto branco */
+  background-color: #28a745; 
+  border-color: #28a745; 
+  color: #fff; 
 }
 
 .modal-dialog{
@@ -107,7 +108,7 @@ body{
 
 .mmodal-content{
   border-radius: 0px;
-  max-height: 80vh; /* Defina a altura máxima desejada para o modal */
+  max-height: 80vh; 
   overflow-y: auto;
 }
 
