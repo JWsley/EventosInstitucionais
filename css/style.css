@@ -79,13 +79,14 @@ body{
   color: #fff; 
 }
 
+/* Consolidar as propriedades de #calendar .fc-header-toolbar .fc-button-primary em um único seletor */
 #calendar .fc-header-toolbar .fc-button-primary {
   background-color: #2b825d; 
   border-color: #2b825d; 
   color: #fff; 
 }
 
-
+/* Consolidar as propriedades de #calendar .fc-header-toolbar .fc-button-primary:hover em um único seletor */
 #calendar .fc-header-toolbar .fc-button-primary:hover {
   background-color: #28a745; 
   border-color: #28a745; 
@@ -215,7 +216,86 @@ a{
  background-color: rgb(205, 235, 174); /* Começa sem outline */
   transition:  0.1s ease-in-out; /* Adiciona uma transição de 0.2 segundos */
   box-sizing: border-box; /* Faz com que o outline não afete o tamanho do elemento */
-  padding: 2px; /* Adiciona um padding para garantir que o outline não interfira com o conteúdo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  background-color: #2b825d;
+  width: 100%;
+  border-bottom: 3px solid black;
+}
+
+.titulo {
+  color: white;
+}
+
+#calendar {
+  height: 70vh;
+  width: 80vw;
+  max-width: 100%;
+}
+
+.modal-dialog {
+  height: 120px;
+  width: 90%;
+  max-width: 600px;
+  top: 20%;
+}
+
+.modal-content {
+  border-radius: 0;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  background-color: #2b825d;
+  height: 45px;
+}
+
+.if_logo {
+  height: 30px;
+  width: auto;
+  margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .cabecalho {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #calendar {
+    height: 50vh;
+  }
+
+  .modal-dialog {
+    top: 10%;
+  }
+}
 }
 
 
@@ -276,11 +356,10 @@ thead{
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
-.icon_clock{
-
+/* Adicionar espaço após a propriedade */
+.icon_clock {
     height: 25px;
     width: 25px;
 
@@ -293,9 +372,8 @@ thead{
   left: 15px; 
 }
 
-
-.fc-event-time{
-
+/* Adicionar espaço após a propriedade */
+.fc-event-time {
   display: none;
 
 }
