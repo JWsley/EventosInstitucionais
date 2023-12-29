@@ -9,6 +9,7 @@ function eventSheet(callback) {
         description: evento.desc,
         local: evento.local,
         horario_inicio: evento.horario_inicio,
+        horario_fim: evento.horario_fim,
         unidade: evento.unidade,
         setor: evento.setor,
         num: evento.num,
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const outros_frmtd = formatacao(info.event.extendedProps.outros, 39);
         const email_frmtd = formatacao(info.event.extendedProps.email, 39);
         const desc_frmtd = formatacao(info.event.extendedProps.description, 39);
-        console.log(info.event.extendedProps.horario_inicio);
+        console.log(info.event.extendedProps.horario_fim);
 
         modalBody.innerHTML = `
 
