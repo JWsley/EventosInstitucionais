@@ -125,11 +125,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
             case 'reitoria':
               unidade_url = 'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+de+Educação+Ciência+e+Tecnologia+do+Sul+de+Minas+Gerais+REITORIA';
-
-
-              console.log('ok')
               break
-
+            case 'carmo de minas':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=IFSULDEMINAS+-+Campus+Avançado+Carmo+de+Minas';
+              break
+            case 'inconfidentes':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+do+Sul+de+Minas+Gerais+-+Campus+Inconfidentes';
+              break
+            case 'machado':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=IFSULDEMINAS+-+Campus+Machado';
+              break
+            case 'muzambinho':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+de+Educação,+Ciência+e+Tecnologia+do+Sul+de+Minas+Gerais+-+Campus+Muzambinho';
+              break
+            case 'passos':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=IFSULDEMINAS+-+Campus+Passos';
+              break
+            case 'poços de caldas':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=IFSULDEMINAS+-+CAMPUS+POÇOS+DE+CALDAS';
+              break
+            case 'pouso alegre':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+de+Educação,+Ciência+e+Tecnologia+do+Sul+de+Minas+-+Campus+Pouso+Alegre';
+              break
+            case 'três corações':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=IFSULDEMINAS+-+Campus+Avançado+Três+Corações';
+              break
 
 
             default:
