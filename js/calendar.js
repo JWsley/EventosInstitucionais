@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         listWeek: {
           buttonText: 'list week'
-        },  
+        },
         multiMonthYear: {
           type: 'dayGrid',
           duration: {
@@ -108,7 +108,36 @@ document.addEventListener('DOMContentLoaded', function () {
       eventClick: function (info) {
         const modalTitle = document.getElementById('staticBackdropLabel');
         const modalBody = document.querySelector('.modal-body');
+        var urls = [
+          'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+de+Educação+Ciência+e+Tecnologia+do+Sul+de+Minas+Gerais+REITORIA',
+          'https://www.google.com/maps/search/?api=1&query=Unidade+2',
+          'https://www.google.com/maps/search/?api=1&query=Unidade+3',
+        ];
 
+        urls = urls.map(function (url) {
+          return url.toLowerCase();
+        });
+
+        function getUrl(unidade) {
+          console.log(unidade.toLowerCase().trim());
+          let unidade_url = "";
+          switch (unidade.toLowerCase().trim()) {
+
+            case 'reitoria':
+              unidade_url = 'https://www.google.com/maps/search/?api=1&query=Instituto+Federal+de+Educação+Ciência+e+Tecnologia+do+Sul+de+Minas+Gerais+REITORIA';
+
+
+              console.log('ok')
+              break
+
+
+
+            default:
+              console.log('teste')
+          }
+
+          return unidade_url;
+        }
         function formatacao(arg, limite) {
           if (typeof arg !== 'string') {
             return '';
@@ -120,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return formattedString;
         }
-        var google_local = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(info.event.extendedProps.local)}`;
+        // var google_local = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(info.event.extendedProps.local)}`;
 
         const content_title = formatacao(info.event.title, 30);
 
@@ -137,7 +166,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const desc_frmtd = formatacao(info.event.extendedProps.description, 39);
         console.log(info.event.extendedProps.horario_fim);
 
+
+
+        var uni_url = getUrl(unidade_frmtd);
+        console.log(uni_url);
         modalBody.innerHTML = `
+        
 
 <div class="conthr">
 
@@ -148,16 +182,30 @@ document.addEventListener('DOMContentLoaded', function () {
   <strong style="color:#2b825d; margin:5px;">FIM:</strong> ${info.event.extendedProps.horario_fim}.
   </div>
 </div>
-<p><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}</p>
-<p><strong>Local do evento:</strong> <a href="${google_local}" target="_blank">${info.event.extendedProps.local}</a>.</p>
-<p><strong>Unidade:</strong> ${unidade_frmtd}.</p>
-<p><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
-<p><strong>Tipo:  </strong>${tipo_frmtd} ${outros_frmtd}.</p>
-<p><strong>Email :</strong> ${email_frmtd}.</p>
+
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_ i" alt="icon_setor" src="assets/img/responsavel_icon.png"></div><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}
+</span>
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_unidade i" alt="icon_unidade" src="assets/img/unidade_icon.png"></div><strong>Unidade responsavel:</strong> <a id="unidade_resp" href="${uni_url}" class="anchor_decoration" target="_blank">${unidade_frmtd}</a>.</p>
+</span>
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_local i" alt="icon_local" src="assets/img/local_icon.png"></div><strong>Local do evento:</strong>${local_frmtd}.</p> 
+</span>
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_quantidade i" alt="icon_quantidade" src="assets/img/quantidade_icon.png"></div><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
+</span>
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${tipo_frmtd} ${outros_frmtd}.</p>
+</span>
+<span class="justify">
+  <p><div class="iconarea"><img class="icon_email i" alt="icon_email" src="assets/img/email_icon.png"></div><strong>Email: </strong> <a class="anchor_decoration" style="cursor:pointer;" href="mailto:${email_frmtd}">${email_frmtd}</a>.</p>
+</span>
 <hr>
 <strong style="color:#2b825d;border-bottom:2px solid #2b825d;">Descrição</strong>
 <p>${desc_frmtd}.</p>
 `;
+
         const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
 
         modalevent.show();

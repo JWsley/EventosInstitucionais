@@ -124,6 +124,12 @@ body{
 }
 
 
+.modal-header , .modal-body{
+  border-left:4px double #2b825d;   
+ 
+
+}
+
 a{
   text-decoration:none;
 
@@ -266,13 +272,14 @@ body {
 }
 
 .modal-content {
-  border-radius: 0;
+  
   max-height: 80vh;
   overflow-y: auto;
 }
 
 .modal-footer {
   background-color: #2b825d;
+     
   height: 45px;
 }
 
@@ -331,6 +338,7 @@ thead{
 }
 
 
+
 .hour-title{
 
   font-size: 20px;
@@ -350,7 +358,7 @@ thead{
 .conthr{
 
   height: 60px;
-  width: 95%;
+  width: 100%;
   border: 2px solid #2b825d;
   margin-bottom: 5px ;
   display: flex;
@@ -358,7 +366,7 @@ thead{
   align-items: center;
 }
 
-/* Adicionar espaço após a propriedade */
+
 .icon_clock {
     height: 25px;
     width: 25px;
@@ -372,8 +380,55 @@ thead{
   left: 15px; 
 }
 
-/* Adicionar espaço após a propriedade */
+
 .fc-event-time {
   display: none;
 
 }
+
+
+
+
+.iconarea{
+
+    height:70px;
+    width:70px;
+
+
+    border-radius:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:5px;
+}
+
+
+.i{
+      height:100% ;
+      width:100%;
+
+
+}
+
+
+.justify{
+
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    align-items:center;
+    
+    margin-bottom:5px;
+}
+
+
+ .justify strong{
+  margin-right:5px;
+
+ }
+
+ .anchor_decoration{
+
+  text-decoration:underline;
+ }
