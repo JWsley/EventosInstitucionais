@@ -157,18 +157,19 @@ document.addEventListener('DOMContentLoaded', function () {
         modalTitle.innerHTML = String(content_title);
 
         const setor_responsavel_frmtd = formatacao(info.event.extendedProps.setor, 39);
-        const local_frmtd = formatacao(info.event.extendedProps.localizacao, 39);
+        const local_frmtd = formatacao(info.event.extendedProps.local, 39);
         const unidade_frmtd = formatacao(info.event.extendedProps.unidade, 39);
-        const num_frmtd = formatacao(info.event.extendedProps.num, 39);
+        const num_frmtd = info.event.extendedProps.num;
         const tipo_frmtd = formatacao(info.event.extendedProps.tipo, 39);
         const outros_frmtd = formatacao(info.event.extendedProps.outros, 39);
         const email_frmtd = formatacao(info.event.extendedProps.email, 39);
-        const desc_frmtd = formatacao(info.event.extendedProps.description, 39);
+        const desc_frmtd = formatacao(info.event.extendedProps.description.toString(), 39);
         console.log(info.event.extendedProps.horario_fim);
 
 
 
         var uni_url = getUrl(unidade_frmtd);
+        console.log(desc_frmtd);
         console.log(uni_url);
         modalBody.innerHTML = `
         
