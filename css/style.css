@@ -10,7 +10,7 @@
 
 body{
         height: 100vh;
-        width: 100vw;
+        width: 100%;
 
 
         display: flex;
@@ -40,7 +40,7 @@ body{
    
     top: 5%;
     height: 70vh;
-    width: 80vw;
+    width: 80%;
 
 
 }
@@ -72,6 +72,9 @@ body{
   color: #fff;
 }
 
+.fc .fc-toolbar{
+  justify-content: space-between;
+}
 
 .fc .fc-button:hover {
   background-color: #218838; 
@@ -84,6 +87,7 @@ body{
   background-color: #2b825d; 
   border-color: #2b825d; 
   color: #fff; 
+  
 }
 
 /* Consolidar as propriedades de #calendar .fc-header-toolbar .fc-button-primary:hover em um único seletor */
@@ -96,7 +100,7 @@ body{
 .modal-dialog{
     height: 120px;
     width: 600px;
-    top: 20%;
+    top: 18%;
 
 }
 
@@ -166,6 +170,14 @@ a{
 .titulo{
 
   color: white;
+}
+
+.instituto{
+
+  position: absolute;
+  top: 20%;
+  left: 1%;
+
 }
 
 
@@ -431,4 +443,10 @@ thead{
  .anchor_decoration{
 
   text-decoration:underline;
+ }
+
+
+
+ .fc .fc-popover{
+  z-index: 1;
  }

@@ -19,6 +19,7 @@ function eventSheet(callback) {
       }));
 
       callback(eventos);
+      console.log(eventos);
     })
     .catch(error => {
       console.error('Erro ao obter os eventos', error);
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loader.style.display = "none";
     cabecalho.style.display = "flex";
     var calendar = new FullCalendar.Calendar(calendarEl, {
-
+      timeFormat: 'H(:mm)' ,
       themeSystem: 'bootstrap5',
       buttonText: {
         today: 'Hoje',
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headerToolbar: {
         left: 'prev,next,today',
         center: 'title',
-        right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay'
+        right: 'multiMonthYear,dayGridMonth'  // timeGridWeek,timeGridDay temporariamente desabilitados
       },
       views: {
         listDay: {
@@ -73,6 +74,20 @@ document.addEventListener('DOMContentLoaded', function () {
           duration: {
             months: 12
           },
+          eventTimeFormat: { // formato de exibição do tempo para os eventos
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false // formato de 24 horas
+          },
+          slotLabelFormat: { // formato de exibição dos rótulos de intervalo de tempo
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false // formato de 24 horas
+          },
+          timeGrid: {
+            slotLabelFormat: { hour: '1-digit', minute: '1-digit', omitZeroMinute: false, meridiem: 'short' }
+          },
+        
           buttonText: 'Ano'
         },
         validRange: function (nowDate) {
@@ -242,3 +257,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+
+
+
+
+
+
