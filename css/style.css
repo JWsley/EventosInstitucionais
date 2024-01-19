@@ -397,6 +397,15 @@ thead{
   display: none;
 
 }
+.fc-event-main{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #2b825d ;
+  z-index:1;
+  cursor:pointer;
+
+}
 
 
 
