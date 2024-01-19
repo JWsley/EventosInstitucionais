@@ -1,5 +1,5 @@
 function eventSheet(callback) {
-  fetch('https://script.googleusercontent.com/macros/echo?user_content_key=wxakzQgoOxaXZ8hxTnqxdEBuobEU8STRw_PEsF2HveNgzffp8MEa3FwwSBOQCcIHbKQAAZRX5PQh38eEkgtHfh63b19GMWMRm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnI0DsVJlhOJrPKJ-9UokLRYPaEFVcbqSq0OD6ALZoaWwmiCpF_FHppieZHJQaEvwGIN6m86dEgfeTFp05xYkV8XMeP20LYIz99z9Jw9Md8uu&lib=Ms0CmmrMR_PaYaKGVs8OTaxByP_xFMRvX')
+  fetch('https://script.google.com/macros/s/AKfycbxsPUtmqIaj5GZkhT2vN3NPkZvSa1M7RDbLpfXyAN4MKLuFFHBOEpge2xlR7nbvYouFGQ/exec')
     .then(response => response.json())
     .then(data => {
       const eventos = data.output.map(evento => ({
@@ -13,11 +13,11 @@ function eventSheet(callback) {
         unidade: evento.unidade,
         setor: evento.setor,
         num: evento.num,
-        tipo: evento.tipo,
+        tipo: evento.tipo,    
         outros: evento.outros,
         email: evento.email
       }));
-
+      
       callback(eventos);
       console.log(eventos);
     })
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loader.style.display = "none";
     cabecalho.style.display = "flex";
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      timeFormat: 'H(:mm)' ,
+      timeZone: 'America/Sao_Paulo',
       themeSystem: 'bootstrap5',
       buttonText: {
         today: 'Hoje',
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headerToolbar: {
         left: 'prev,next,today',
         center: 'title',
-        right: 'multiMonthYear,dayGridMonth'  // timeGridWeek,timeGridDay temporariamente desabilitados
+        right: 'multiMonthYear,dayGridMonth,timeGridWeek'  // timeGridWeek,timeGridDay temporariamente desabilitados
       },
       views: {
         listDay: {
