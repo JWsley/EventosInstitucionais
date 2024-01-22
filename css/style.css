@@ -46,12 +46,10 @@ body{
 }
 
 
+
+
 .fc-event {
   color: #fff;
-}
-
-
-.fc-event {
   background-color: #28a745;
   border-color: #28a745;
 }
@@ -90,7 +88,6 @@ body{
   
 }
 
-/* Consolidar as propriedades de #calendar .fc-header-toolbar .fc-button-primary:hover em um único seletor */
 #calendar .fc-header-toolbar .fc-button-primary:hover {
   background-color: #28a745; 
   border-color: #28a745; 
@@ -193,7 +190,11 @@ a{
 
 
 
+
+
 }
+
+
 
 .fc-daygrid-event-harness:hover .fc-event-title{
     color: black;
@@ -211,10 +212,12 @@ a{
 
   background-size: cover;
   
-}.fc-daygrid-day-frame:hover{
+}.fc-daygrid-event:hover{
   transition: 1s ease-in-out;
     transform: scale(1.04);
   cursor: pointer;
+  border:2px solid green;
+
 
 }
 
@@ -231,9 +234,9 @@ a{
 .day-select {
   
   z-index: 1;
- background-color: rgb(205, 235, 174); /* Começa sem outline */
-  transition:  0.1s ease-in-out; /* Adiciona uma transição de 0.2 segundos */
-  box-sizing: border-box; /* Faz com que o outline não afete o tamanho do elemento */
+ background-color: rgb(205, 235, 174); 
+  transition:  0.1s ease-in-out; 
+  box-sizing: border-box;
 * {
   margin: 0;
   padding: 0;
@@ -402,11 +405,10 @@ thead{
   align-items:center;
   justify-content:center;
   background: #2b825d ;
-  z-index:1;
+  z-index:5;
   cursor:pointer;
 
 }
-
 
 
 
@@ -459,3 +461,6 @@ thead{
  .fc .fc-popover{
   z-index: 1;
  }
+
+
+ 

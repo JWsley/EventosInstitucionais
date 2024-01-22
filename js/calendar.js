@@ -17,7 +17,7 @@ function eventSheet(callback) {
         outros: evento.outros,
         email: evento.email
       }));
-      
+
       callback(eventos);
       console.log(eventos);
     })
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headerToolbar: {
         left: 'prev,next,today',
         center: 'title',
-        right: 'multiMonthYear,dayGridMonth,timeGridWeek'  // timeGridWeek,timeGridDay temporariamente desabilitados
+        right: 'multiMonthYear,dayGridMonth,timeGridWeek' 
       },
       views: {
         listDay: {
@@ -74,15 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
           duration: {
             months: 12
           },
-          eventTimeFormat: { // formato de exibição do tempo para os eventos
+          eventTimeFormat: { 
             hour: '2-digit',
             minute: '2-digit',
-            hour12: false // formato de 24 horas
+            hour12: false 
           },
-          slotLabelFormat: { // formato de exibição dos rótulos de intervalo de tempo
-            hour: '2-digit',
+          slotLabelFormat: { 
+            hour: '2-digit',  
             minute: '2-digit',
-            hour12: false // formato de 24 horas
+            hour12: false 
           },
           timeGrid: {
             slotLabelFormat: { hour: '1-digit', minute: '1-digit', omitZeroMinute: false, meridiem: 'short' }

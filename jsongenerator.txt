@@ -1,4 +1,5 @@
 
+
 function doGet(req) {
   var nOmee = req.parameter.nOmee;
   var doc = SpreadsheetApp.getActiveSpreadsheet();
@@ -9,10 +10,11 @@ function doGet(req) {
 
   for (var i = 3; i < values.length; i++) {
     var row = {};
+    start_time =  Utilities.formatDate(new Date(values[i][3]), Session.getScriptTimeZone(), "HH:mm");
     row['nome'] = values[i][1];
-    row['data'] = values[i][2];
-    row['horario_inicio'] = values[i][3];
-    row['horario_fim'] = values[i][4];
+    row['data'] = Utilities.formatDate(new Date(values[i][2]), Session.getScriptTimeZone(), "yyyy-MM-dd'T'"+start_time+":00'Z'");
+    row['horario_inicio'] = Utilities.formatDate(new Date(values[i][3]), Session.getScriptTimeZone(), "HH:mm");
+    row['horario_fim'] = Utilities.formatDate(new Date(values[i][4]), Session.getScriptTimeZone(), "HH:mm");
     row['desc'] = values[i][5];
     row['unidade'] = values[i][6];
     row['setor'] = values[i][7];
@@ -22,7 +24,8 @@ function doGet(req) {
     row['outros'] = values[i][11];
     row['email'] = values[i][12];
     output.push(row);
-  }
+}
+
 
   if (nOmee != null) {
     var returnOutput = output.filter(obj => obj.nome.toLowerCase().includes(nOmee.toLowerCase()));
@@ -33,5 +36,14 @@ function doGet(req) {
 }
 
 
-URL
-https://script.googleusercontent.com/macros/echo?user_content_key=GGFWsFTAj4nfGcrzBWTmGJ4cysT14tq3HgbkKMzNodvY0lBNIM0gNvbliMy1T_cEWsGkOIJ4Gw9rIL_aPE8mDbT4D6nY75k3m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlH4rl_2I6A0fBuvsMVLSLQX4Qz8QfJVRehoU_x4fGZpqUOuVP-22DpjpuJZu2kJBFl7qRFVt-6Gde9n4A1VjEuzdndE6vXAg&lib=Ms0CmmrMR_PaYaKGVs8OTaxByP_xFMRvX
+URL:
+
+https://eventos-institucionais-ztai.vercel.app/
+
+JSON:
+
+https://script.google.com/macros/s/AKfycbxsPUtmqIaj5GZkhT2vN3NPkZvSa1M7RDbLpfXyAN4MKLuFFHBOEpge2xlR7nbvYouFGQ/exec
+
+PLANILHA:
+
+https://docs.google.com/spreadsheets/d/1_gz4pZVsK9-GWoZSlbVsDiYTCvu7l80OxDk3rkunMls/edit#gid=394821800
