@@ -36,9 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var cabecalho = document.getElementById('cabecalho');
     var loader = document.getElementById('loader');
-
+    var iflogo = document.getElementById('iflogo').style.display="block";
     loader.style.display = "none";
     cabecalho.style.display = "flex";
+  
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: 'America/Sao_Paulo',
       themeSystem: 'bootstrap5',

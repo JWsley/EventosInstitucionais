@@ -16,6 +16,7 @@ body{
         display: flex;
         align-items: center;
         justify-content: center;
+      
 
         flex-direction: column;
 
@@ -122,6 +123,17 @@ body{
   height: 45px;
 
 
+
+}
+
+.modal-logo{
+
+  filter: brightness(1000%);
+  height:35px;
+  width:auto;
+  margin-right:62%;
+  margin-top:  -6px; 
+
 }
 
 
@@ -172,7 +184,7 @@ a{
 .instituto{
 
   position: absolute;
-  top: 20%;
+  bottom: 2%;
   left: 1%;
 
 }
@@ -300,7 +312,7 @@ body {
 }
 
 .if_logo {
-  height: 30px;
+  height: 3px;
   width: auto;
   margin-left: 15px;
 }
@@ -389,12 +401,6 @@ thead{
 
 }
 
-.if_logo {
-  position: absolute;
-  height: 30px;
-  width: auto;
-  left: 15px; 
-}
 
 
 .fc-event-time {
