@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <p><div class="iconarea"><img class="icon_quantidade i" alt="icon_quantidade" src="assets/img/quantidade_icon.png"></div><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${tipo_frmtd} ${outros_frmtd}.</p>
+  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${ console.log(tipo_frmtd),  tipo_frmtd.trim() === 'Outros' ? outros_frmtd : tipo_frmtd}.</p>
 </span>
 <span class="justify">
   <p><div class="iconarea"><img class="icon_email i" alt="icon_email" src="assets/img/email_icon.png"></div><strong>Email: </strong> <a class="anchor_decoration" style="cursor:pointer;" href="mailto:${email_frmtd}">${email_frmtd}</a>.</p>
