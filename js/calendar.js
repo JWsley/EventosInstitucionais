@@ -19,12 +19,11 @@ function eventSheet(callback) {
       }));
 
       callback(eventos);
-      console.log(eventos);
     })
     .catch(error => {
       console.error('Erro ao obter os eventos', error);
       callback([]);
-    });
+    }); 
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -80,14 +79,14 @@ document.addEventListener('DOMContentLoaded', function () {
             minute: '2-digit',
             hour12: false 
           },
-          slotLabelFormat: { 
-            hour: '2-digit',  
-            minute: '2-digit',
-            hour12: false 
-          },
+         
           timeGrid: {
-            slotLabelFormat: { hour: '1-digit', minute: '1-digit', omitZeroMinute: false, meridiem: 'short' }
-          },
+             slotLabelFormat: {
+              hour: 'numeric',
+              minute: '2-digit',
+              hour12: true
+            
+          }},
         
           buttonText: 'Ano'
         },
@@ -135,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function getUrl(unidade) {
-          console.log(unidade.toLowerCase().trim());
           let unidade_url = "";
           switch (unidade.toLowerCase().trim()) {
 
@@ -169,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             default:
-              console.log('teste')
+              console.log('erro_locate')
           }
 
           return unidade_url;
@@ -185,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return formattedString;
         }
-        // var google_local = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(info.event.extendedProps.local)}`;
+  
 
         const content_title = formatacao(info.event.title, 30);
 
@@ -200,13 +198,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const outros_frmtd = formatacao(info.event.extendedProps.outros, 39);
         const email_frmtd = formatacao(info.event.extendedProps.email, 39);
         const desc_frmtd = formatacao(info.event.extendedProps.description.toString(), 39);
-        console.log(info.event.extendedProps.horario_fim);
+    
 
 
 
         var uni_url = getUrl(unidade_frmtd);
-        console.log(desc_frmtd);
-        console.log(uni_url);
         modalBody.innerHTML = `
         
 
@@ -233,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <p><div class="iconarea"><img class="icon_quantidade i" alt="icon_quantidade" src="assets/img/quantidade_icon.png"></div><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${ console.log(tipo_frmtd),  tipo_frmtd.trim() === 'Outros' ? outros_frmtd : tipo_frmtd}.</p>
+  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${tipo_frmtd.trim() === 'Outros' ? outros_frmtd : tipo_frmtd}.</p>
 </span>
 <span class="justify">
   <p><div class="iconarea"><img class="icon_email i" alt="icon_email" src="assets/img/email_icon.png"></div><strong>Email: </strong> <a class="anchor_decoration" style="cursor:pointer;" href="mailto:${email_frmtd}">${email_frmtd}</a>.</p>
