@@ -302,10 +302,16 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       if (view.type === 'timeGridWeek'  && screenWidth <= 680) {
         var text = document.querySelector('.fc-timegrid-axis-cushion.fc-scrollgrid-shrink-cushion.fc-scrollgrid-sync-inner');
-        
-        var columns = document.querySelector('.fc-timegrid-cols table');
-        var table = columns = columns.querySelector(":first-child");
-        console.log(table);
+
+        var tableBody = document.querySelector('.fc-timegrid-body');
+        var table = document.querySelector('.fc-timegrid-cols table');
+        var tablegrid = document.querySelector('.fc-timegrid-slots table');
+
+        // columns.style.width = "100%";
+        console.log(tableBody);
+        // var table = columns = columns.querySelector(":nth-child(1)");
+       
+
         text.style.width="90%";
         text.style.margin="10px";
         var headwidth1 = document.querySelector('.fc-daygrid-body.fc-daygrid-body-unbalanced.fc-daygrid-body-natural');
@@ -314,7 +320,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         headwidth2.style.width="100% ";
 
-      
+    
+        tablegrid.style.width="100%";
+        tableBody.style.width="100%";
         table.style.width="100%";
 
 
