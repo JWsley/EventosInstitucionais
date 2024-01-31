@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="conthr">
 
-  <div class="img_cont"> <strong class="hour-title">Horários</strong><img class="icon_clock" src="assets/img/clock.png"></div>
+  <div class="img_cont"> <strong class="hour-title"  style="background:white;">Horários</strong><img class="icon_clock" src="assets/img/clock.png" style="background:white;"></div>
 
   <div class="horario-container" >
   <strong style="color:#2b825d; margin:5px;">INICIO:</strong> ${info.event.extendedProps.horario_inicio}.
@@ -263,7 +263,8 @@ document.addEventListener('DOMContentLoaded', function () {
       events: eventos
     });
 
-    calendar.render();
+    calendar.render();  
+
 
 
     function adjustGridWidth() {
@@ -307,10 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var table = document.querySelector('.fc-timegrid-cols table');
         var tablegrid = document.querySelector('.fc-timegrid-slots table');
 
-        // columns.style.width = "100%";
-        console.log(tableBody);
-        // var table = columns = columns.querySelector(":nth-child(1)");
-       
+      
 
         text.style.width="90%";
         text.style.margin="10px";
@@ -329,11 +327,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Ajuste inicial ao carregar a página
+
     adjustGridWidth();
 
-    // Configurar intervalo para ajustar periodicamente a largura da grade
-    setInterval(adjustGridWidth, 500); // Ajusta a cada 5000 milissegundos (5 segundos). Ajuste conforme necessário.
+
+    setInterval(adjustGridWidth, 500); 
   });
 
 
