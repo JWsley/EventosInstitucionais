@@ -13,7 +13,7 @@ function eventSheet(callback) {
         unidade: evento.unidade,
         setor: evento.setor,
         num: evento.num,
-        tipo: evento.tipo,    
+        tipo: evento.tipo,
         outros: evento.outros,
         email: evento.email
       }));
@@ -23,7 +23,7 @@ function eventSheet(callback) {
     .catch(error => {
       console.error('Erro ao obter os eventos', error);
       callback([]);
-    }); 
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -31,14 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var today = new Date();
     var prevClickedDay = null;
 
+
     var calendarEl = document.getElementById('calendar');
 
     var cabecalho = document.getElementById('cabecalho');
     var loader = document.getElementById('loader');
-    var iflogo = document.getElementById('iflogo').style.display="block";
+    var iflogo = document.getElementById('iflogo').style.display = "block";
     loader.style.display = "none";
     cabecalho.style.display = "flex";
-  
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: 'America/Sao_Paulo',
       themeSystem: 'bootstrap5',
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       headerToolbar: {
         left: 'prev,next,today',
         center: 'title',
-        right: 'multiMonthYear,dayGridMonth,timeGridWeek' 
+        right: 'multiMonthYear,dayGridMonth,timeGridWeek'
       },
       views: {
         listDay: {
@@ -69,27 +70,42 @@ document.addEventListener('DOMContentLoaded', function () {
         listWeek: {
           buttonText: 'list week'
         },
+        viewDidMount: function (view) {
+
+          var gridWidth = document.querySelector('.fc-daygrid-body.fc-daygrid-body-balanced');
+          var tableWidth = document.querySelector('.fc-scrollgrid-sync-table');
+          if (gridWidth) {
+            gridWidth.style.width = '100%';
+
+            tableWidth.style.width = "100%"
+            tableWidth.style.height = "370px"
+          }
+
+        },
         multiMonthYear: {
           type: 'dayGrid',
           duration: {
             months: 12
           },
-          eventTimeFormat: { 
+          eventTimeFormat: {
             hour: '2-digit',
             minute: '2-digit',
-            hour12: false 
+            hour12: false
           },
-         
+
           timeGrid: {
-             slotLabelFormat: {
+            slotLabelFormat: {
               hour: 'numeric',
               minute: '2-digit',
-              hour12: true
-            
-          }},
-        
+              omitZeroMinute: true,
+              meridiem: 'short',
+
+            }
+          },
+
           buttonText: 'Ano'
         },
+
         validRange: function (nowDate) {
           var thisYear = nowDate.getFullYear();
           var minDate = new Date(thisYear, 0, 1);
@@ -121,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
 
       eventClick: function (info) {
+
         const modalTitle = document.getElementById('staticBackdropLabel');
         const modalBody = document.querySelector('.modal-body');
         var urls = [
@@ -183,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           return formattedString;
         }
-  
+
 
         const content_title = formatacao(info.event.title, 30);
 
@@ -198,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const outros_frmtd = formatacao(info.event.extendedProps.outros, 39);
         const email_frmtd = formatacao(info.event.extendedProps.email, 39);
         const desc_frmtd = formatacao(info.event.extendedProps.description.toString(), 39);
-    
+
 
 
 
@@ -248,12 +265,77 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 
-    document.querySelectorAll('.fc-prev-button, .fc-next-button, .fc-today-button, .fc-dayGridMonth-button, .fc-timeGridWeek-button, .fc-timeGridDay-button, .fc-listWeek-button').forEach(function (button) {
-      button.classList.remove('btn-primary');
-      button.classList.add('btn', 'btn-success');
-    });
+
+    function adjustGridWidth() {
+
+      var view = calendar.view;
+      var screenWidth = window.innerWidth;
+
+
+
+
+      var headerWidth = document.querySelector('.fc-col-header');
+      if (headerWidth) {
+        headerWidth.style.width = '100%';
+      }
+      if (view.type === 'dayGridMonth'  && screenWidth <= 680) {
+
+        var gridWrapper = document.querySelector('.fc-daygrid-body.fc-daygrid-body-balanced .fc-scroller-liquid');
+        if (gridWrapper) {
+          gridWrapper.style.width = '100%';
+        }
+
+        var gridWidth = document.querySelector('.fc-daygrid-body.fc-daygrid-body-balanced');
+        var tableWidth = document.querySelector('.fc-scrollgrid-sync-table');
+       
+
+        if (gridWidth) {
+          gridWidth.style.width = '100%';
+        }
+
+        if (tableWidth) {
+          tableWidth.style.width = '100%';
+          tableWidth.style.height = '370px';
+        }
+
+      
+      }
+      if (view.type === 'timeGridWeek'  && screenWidth <= 680) {
+        var text = document.querySelector('.fc-timegrid-axis-cushion.fc-scrollgrid-shrink-cushion.fc-scrollgrid-sync-inner');
+        
+        var columns = document.querySelector('.fc-timegrid-cols table');
+        var table = columns = columns.querySelector(":first-child");
+        console.log(table);
+        text.style.width="90%";
+        text.style.margin="10px";
+        var headwidth1 = document.querySelector('.fc-daygrid-body.fc-daygrid-body-unbalanced.fc-daygrid-body-natural');
+        var headwidth2 = document.querySelector('.fc-scrollgrid-sync-table');
+        headwidth1.style.width="100% ";
+
+        headwidth2.style.width="100% ";
+
+      
+        table.style.width="100%";
+
+
+      }
+    }
+
+    // Ajuste inicial ao carregar a página
+    adjustGridWidth();
+
+    // Configurar intervalo para ajustar periodicamente a largura da grade
+    setInterval(adjustGridWidth, 500); // Ajusta a cada 5000 milissegundos (5 segundos). Ajuste conforme necessário.
+  });
+
+
+
+  document.querySelectorAll('.fc-prev-button, .fc-next-button, .fc-today-button, .fc-dayGridMonth-button, .fc-timeGridWeek-button, .fc-timeGridDay-button, .fc-listWeek-button').forEach(function (button) {
+    button.classList.remove('btn-primary');
+    button.classList.add('btn', 'btn-success');
   });
 });
+;
 
 
 
