@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="conthr">
 
-  <div class="img_cont"> <strong class="hour-title"  style="background:white;">Horários</strong><img class="icon_clock" src="assets/img/clock.png" style="background:white;"></div>
+  <div class="img_cont"> <strong>Horários</strong><img class="icon_clock" src="assets/img/clock.png" style="background:white;"></div>
 
   <div class="horario-container" >
   <strong style="color:#2b825d; margin:5px;">INICIO:</strong> ${info.event.extendedProps.horario_inicio}.
