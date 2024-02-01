@@ -1,0 +1,115 @@
+
+@media only screen and (max-width: 680px){
+
+    *{
+  
+      overflow-X:hidden;
+  
+    }
+  
+    .if_logo{
+        
+          transform:scale(0.7);
+          margin-top:15px;  
+  
+  
+    }
+  
+    .instituto{
+  
+      position: absolute;
+     bottom:0.5vh;
+     left:0vw;
+    
+    }
+    
+    .titulo{
+  
+  
+        transform:scale(0.8);
+  
+  
+    }
+    #calendar{
+  
+        width:150%;
+        transform:scale(0.6);
+    }
+  
+    .fc-toolbar-title{
+  
+      transform:scale(0.7);
+    
+    }
+  
+    
+    .fc-toolbar-chunk{
+      width:100%;
+  
+      transform:scale(0.9);}
+  
+  
+      .modal{
+       
+        height:100%;
+        width:100vw; 
+  
+      }
+      .modal-dialog{
+        position:absolute;
+          top:0;
+          left:0;
+          height:100%;
+          width:95%;
+    }
+    
+    
+    .btn-close{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    
+    }
+    
+    .modal-content{
+  
+      max-height: 100vh; 
+      overflow-y: auto;
+    }
+  
+    .modalBody{
+      transform:scale(0.5);
+  
+    }
+    
+    
+    .modal-footer{
+    
+      background-color: #2b825d;
+      height: 45px;
+    
+    
+    
+    }
+    
+    .modal-logo{
+    
+      filter: brightness(1000%);
+      height:35px;
+      width:auto;
+      margin-right:62%;
+      margin-top:  -6px; 
+    
+    }
+    
+    
+    .modal-header , .modal-body{
+      border-left:4px double #2b825d;   
+     
+    
+    }
+    
+  
+   }
+  
+  
