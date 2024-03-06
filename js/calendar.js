@@ -193,7 +193,6 @@ document.addEventListener('DOMContentLoaded', function () {
           if (typeof arg !== 'string') {
             return '';
           }
-
           let formattedString = '';
           for (let i = 0; i < arg.length; i += limite) {
             formattedString += arg.substring(i, i + limite) + '\n';
@@ -201,13 +200,37 @@ document.addEventListener('DOMContentLoaded', function () {
           return formattedString;
         }
 
+  
+        function formatacao_especial(arg,limite,sub_limite) {
+          if (typeof arg !== 'string') {
+            return '';
+          }
+        
+          let formattedString = '';
+          const limitePrimeiraLinha = limite;
+          const limiteLinhasSubsequentes = sub_limite;
+        
+          // Quebra na primeira linha
+          formattedString += arg.substring(0, limitePrimeiraLinha) + '\n';
+    
+          // Quebra nas linhas subsequentes
+          for (let i = limitePrimeiraLinha; i < arg.length; i += limiteLinhasSubsequentes) {
+            formattedString += arg.substring(i, i + limiteLinhasSubsequentes) + '\n';
+          }
+        
+          return formattedString;
+        }
+        
+       
+      
+
 
         const content_title = formatacao(info.event.title, 30);
 
 
         modalTitle.innerHTML = String(content_title);
 
-        const setor_responsavel_frmtd = formatacao(info.event.extendedProps.setor, 39);
+        const setor_responsavel_frmtd = formatacao_especial(info.event.extendedProps.setor, 45,67); 
         const local_frmtd = formatacao(info.event.extendedProps.local, 39);
         const unidade_frmtd = formatacao(info.event.extendedProps.unidade, 39);
         const num_frmtd = info.event.extendedProps.num;
@@ -234,26 +257,26 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_ i" alt="icon_setor" src="assets/img/responsavel_icon.png"></div><strong>Setor/Responsavel:</strong> ${setor_responsavel_frmtd}
+  <p><div class="iconarea"><img class="icon_ i" alt="icon_setor" src="assets/img/responsavel_icon.png"></div><div class="column_fix"><strong>Setor/Responsavel:</strong>${setor_responsavel_frmtd}</div>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_unidade i" alt="icon_unidade" src="assets/img/unidade_icon.png"></div><strong>Unidade responsavel:</strong> <a id="unidade_resp" href="${uni_url}" class="anchor_decoration" target="_blank">${unidade_frmtd}</a>.</p>
+  <p><div class="iconarea"><img class="icon_unidade i" alt="icon_unidade" src="assets/img/unidade_icon.png"></div><div style="font-size:12px;"><strong>Unidade responsavel:</strong> <a id="unidade_resp" href="${uni_url}" class="anchor_decoration" target="_blank">${unidade_frmtd}</a>.</div></p>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_local i" alt="icon_local" src="assets/img/local_icon.png"></div><strong>Local do evento:</strong>${local_frmtd}.</p> 
+  <p><div class="iconarea"><img class="icon_local i" alt="icon_local" src="assets/img/local_icon.png"></div><div style="font-size:12px;"><strong>Local do evento:</strong>${local_frmtd}.</div></p> 
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_quantidade i" alt="icon_quantidade" src="assets/img/quantidade_icon.png"></div><strong>Quantidade de pessoas:</strong> ${num_frmtd}.</p>
+  <p><div class="iconarea"><img class="icon_quantidade i" alt="icon_quantidade" src="assets/img/quantidade_icon.png"></div><div style="font-size:12px;"><strong>Quantidade de pessoas:</strong>${num_frmtd}.</div></p>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><strong>Tipo:  </strong>${tipo_frmtd.trim() === 'Outros' ? outros_frmtd : tipo_frmtd}.</p>
+  <p><div class="iconarea"><img class="icon_tipo i" alt="icon_tipo" src="assets/img/tipo_icon.png"></div><div style="font-size:12px;"><strong>Tipo:</strong>${tipo_frmtd.trim() === 'Outros' ? outros_frmtd : tipo_frmtd}.</div></p>
 </span>
 <span class="justify">
-  <p><div class="iconarea"><img class="icon_email i" alt="icon_email" src="assets/img/email_icon.png"></div><strong>Email: </strong> <a class="anchor_decoration" style="cursor:pointer;" href="mailto:${email_frmtd}">${email_frmtd}</a>.</p>
+  <p><div class="iconarea"><img class="icon_email i" alt="icon_email" src="assets/img/email_icon.png"></div><div style="font-size:12px;"><strong>Email:</strong> <a class="anchor_decoration" style="cursor:pointer;" href="mailto:${email_frmtd}">${email_frmtd}</a>.</div></p>
 </span>
 <hr>
 <strong style="color:#2b825d;border-bottom:2px solid #2b825d;">Descrição</strong>
-<p>${desc_frmtd}.</p>
+<p><div style="font-size:12px;">${desc_frmtd}.</div></p>
 `;
 
         const modalevent = new bootstrap.Modal(document.getElementById('modalevent'));
