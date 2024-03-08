@@ -132,7 +132,7 @@ body{
 .img_cont{
 
   height:100%;
-
+  overflow-Y:hidden;  
 }
 
 .modal-logo{
