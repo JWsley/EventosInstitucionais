@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const content_title = formatacao(info.event.title, 30);
 
 
-        modalTitle.innerHTML = String(content_title);
+        modalTitle.innerHTML = String(info.event.title);
 
         const setor_responsavel_frmtd = info.event.extendedProps.setor; 
         const local_frmtd = info.event.extendedProps.local;

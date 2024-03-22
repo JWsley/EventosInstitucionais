@@ -408,8 +408,10 @@ thead{
 
 
 .icon_clock {
+
     height: 25px;
     width: 25px;
+    margin-bottom:5px;
 
 }
 
@@ -485,7 +487,7 @@ thead{
 .cont_txt{
 
 
-  border:2px solid red;
+ 
   margin-top:25px;
 
 }
