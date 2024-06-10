@@ -21,8 +21,6 @@
 ## Sobre o Projeto
 Este projeto foi criado por Jonathan França a pedido de Roselei Eleotéreo para fornecer uma maneira visual de agendar eventos que ocorrem em todos os campi do IFSULDEMINAS.
 
-## <CENTER>ACESSO RÁPIDO AS FERRAMENTAS</CENTER>
-### <CENTER>|[Calendário Eventos Institucionais](https://eventosinstitucionais.ifsuldeminas.edu.br/)|[Planilha de gerenciamento de eventos](https://docs.google.com/spreadsheets/d/1_gz4pZVsK9-GWoZSlbVsDiYTCvu7l80OxDk3rkunMls/edit?pli=1#gid=394821800)|[Formulário para cadastro de usuário](https://docs.google.com/forms/d/e/1FAIpQLSejjMJ-FahxuKf-hmhl-NU8yJuvCtZR7RG7GNf9fV4JH6OIAw/viewform)|</CENTER>
 ## Ferramentas utilizadas
 
 | FERRAMENTA         | UTILIZAÇÃO                                                    | DOCUMENTAÇÃO                                             | 
