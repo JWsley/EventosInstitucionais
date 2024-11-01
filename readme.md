@@ -109,7 +109,7 @@ Este projeto foi criado por Jonathan França a pedido de Roselei Eleotéreo para
 
 ## Apps Script
 
-CComo visto anteriormente no [Fluxo de funcionamento](#fluxo-de-funcionamento-do-projeto), todas as informações estão sendo armazenadas em uma planilha do Google Sheets. Para acessar seu código, siga o seguinte caminho: ```Extensões > Apps Script > código.gs```.
+Como visto anteriormente no [Fluxo de funcionamento](#fluxo-de-funcionamento-do-projeto), todas as informações estão sendo armazenadas em uma planilha do Google Sheets. Para acessar seu código, siga o seguinte caminho: ```Extensões > Apps Script > código.gs```.
 
 ![appsScript_ph1](/docs/img/appscript_photo1.png)
 
